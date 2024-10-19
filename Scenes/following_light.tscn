@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl2juli3o1glw"]
+
+[ext_resource type="Script" path="res://Scenes/following_light.gd" id="1_8hir1"]
+[ext_resource type="Texture2D" uid="uid://b4el4drq04c5o" path="res://Assets/Light/Light_Transparent.png" id="1_f1gqb"]
+
+[node name="FollowingLight" type="CharacterBody2D"]
+position = Vector2(38, -251)
+scale = Vector2(0.559999, 0.559999)
+motion_mode = 1
+script = ExtResource("1_8hir1")
+OFFSET = Vector2(60, -270)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 8.63
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("1_f1gqb")
+offset = Vector2(-12.02, 0)
+texture_scale = 1.94

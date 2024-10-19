@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://x4jqf11ca6lu"]
+[gd_scene load_steps=4 format=3 uid="uid://x4jqf11ca6lu"]
 
 [ext_resource type="PackedScene" uid="uid://ctee3m6fl62vc" path="res://Scenes/level_1.tscn" id="1_c2hb2"]
 [ext_resource type="PackedScene" uid="uid://cenbovvwhlsh4" path="res://Scenes/player.tscn" id="2_augt1"]
+[ext_resource type="PackedScene" uid="uid://cl2juli3o1glw" path="res://Scenes/following_light.tscn" id="3_h005h"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Level 1" parent="." instance=ExtResource("1_c2hb2")]
 
 [node name="Player" parent="." instance=ExtResource("2_augt1")]
-position = Vector2(835, -5562)
+position = Vector2(-14318, 429)
+scale = Vector2(0.75999, 0.75999)
+
+[node name="FollowingLight" parent="." node_paths=PackedStringArray("PLAYER") instance=ExtResource("3_h005h")]
+position = Vector2(-14498, 276)
+PLAYER = NodePath("../Player")

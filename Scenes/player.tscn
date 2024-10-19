@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cenbovvwhlsh4"]
+[gd_scene load_steps=48 format=3 uid="uid://cenbovvwhlsh4"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qib5o"]
 [ext_resource type="Texture2D" uid="uid://c4qv1ets1ijha" path="res://Assets/ThePlaceholder_v1/ThePlaceholder.png" id="1_vrtqx"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://bfu56l34orlxh" path="res://Assets/Crow/Jump/frame0013.png" id="31_1dd0d"]
 [ext_resource type="Texture2D" uid="uid://b3576sqnjr5vp" path="res://Assets/Crow/Jump/frame0014.png" id="32_wa3i1"]
 [ext_resource type="Texture2D" uid="uid://bbjkjsiuh41ry" path="res://Assets/Crow/Jump/frame0015.png" id="33_efdg2"]
+[ext_resource type="Texture2D" uid="uid://b4el4drq04c5o" path="res://Assets/Light/Light_Transparent.png" id="38_5vxvi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkuje"]
 atlas = ExtResource("1_vrtqx")
@@ -237,20 +238,26 @@ position = Vector2(68, -444)
 script = ExtResource("1_qib5o")
 
 [node name="Lamp" parent="." instance=ExtResource("3_d4dum")]
+visible = false
 position = Vector2(-21, -113)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-246.6, 107.795)
-zoom = Vector2(0.375, 0.375)
+position = Vector2(-70, -319)
+rotation = 0.0349066
+ignore_rotation = false
+zoom = Vector2(0.235, 0.235)
+position_smoothing_enabled = true
+position_smoothing_speed = 4.83
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-86, 54)
+light_mask = 2
+position = Vector2(-46, -207)
 sprite_frames = SubResource("SpriteFrames_tvkxi")
 animation = &"Idle"
 frame_progress = 0.639552
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-141, 284)
+position = Vector2(-140.14, 35.75)
 shape = SubResource("CircleShape2D_oets7")
 
 [node name="Light Area" type="Area2D" parent="."]
@@ -268,6 +275,15 @@ visible = false
 position = Vector2(1.99996, 18)
 scale = Vector2(2.88333, 2.92222)
 texture = ExtResource("3_gdxx3")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(-79, -196)
+scale = Vector2(1.5536, 1.5536)
+energy = 0.17
+blend_mode = 2
+texture = ExtResource("38_5vxvi")
+offset = Vector2(-12.02, 0)
+texture_scale = 1.94
 
 [connection signal="area_entered" from="Light Area" to="." method="_on_light_area_area_entered"]
 [connection signal="body_entered" from="Light Area" to="." method="_on_light_area_body_entered"]

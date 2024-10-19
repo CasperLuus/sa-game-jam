@@ -1,15 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctee3m6fl62vc"]
+[gd_scene load_steps=10 format=3 uid="uid://ctee3m6fl62vc"]
 
 [ext_resource type="Texture2D" uid="uid://diy4nh0i7kcl3" path="res://Assets/Scenes/Level1BLHS.png" id="1_0jvfp"]
-[ext_resource type="PackedScene" uid="uid://djhlhhwwokyqp" path="res://Scenes/water_hazard.tscn" id="2_c7vpd"]
-[ext_resource type="PackedScene" uid="uid://d2vvj0grfem50" path="res://Scenes/spike_hazard.tscn" id="3_cym74"]
-[ext_resource type="PackedScene" uid="uid://rbueg3thm5qc" path="res://Scenes/pickup.tscn" id="4_hndlm"]
+[ext_resource type="PackedScene" path="res://Scenes/water_hazard.tscn" id="2_c7vpd"]
+[ext_resource type="PackedScene" path="res://Scenes/spike_hazard.tscn" id="3_cym74"]
+[ext_resource type="PackedScene" uid="uid://dhikjeodc5lrl" path="res://Scenes/pickup.tscn" id="4_hndlm"]
+[ext_resource type="Texture2D" uid="uid://dgkfd25gqtbda" path="res://Assets/Light/Fire.png" id="5_hkg03"]
 [ext_resource type="Texture2D" uid="uid://dlf7cd1k08ydf" path="res://Assets/Scenes/Level1BC.png" id="5_im7wc"]
 [ext_resource type="Texture2D" uid="uid://dja3o6tf8wxeu" path="res://Assets/Scenes/Level1BRHS.png" id="6_hitcr"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_22hpf"]
+light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gjewi"]
+light_mode = 2
+
 [node name="StaticBody2D" type="StaticBody2D"]
+material = SubResource("CanvasItemMaterial_22hpf")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-18208, 2330)
+scale = Vector2(0.589173, 0.490777)
+energy = 1.94
+blend_mode = 2
+texture = ExtResource("5_hkg03")
+offset = Vector2(-12.02, 0)
+texture_scale = 3.73
 
 [node name="Level" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_gjewi")
 position = Vector2(-10124, -2412)
 scale = Vector2(1.69386, 1.69386)
 texture = ExtResource("1_0jvfp")
