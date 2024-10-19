@@ -230,7 +230,7 @@ animations = [{
 radius = 126.396
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ldpj"]
-radius = 180.336
+radius = 458.157
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(68, -444)
@@ -260,12 +260,12 @@ shape = SubResource("CircleShape2D_0ldpj")
 debug_color = Color(0.621464, 0.353084, 1, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="Light Area"]
-position = Vector2(0.499985, 6.49999)
-scale = Vector2(1.13611, 1.13611)
+position = Vector2(1.99996, 18)
+scale = Vector2(2.88333, 2.92222)
 texture = ExtResource("3_gdxx3")
 
 [node name="Lamp" parent="." instance=ExtResource("3_d4dum")]
-position = Vector2(11, -69)
+position = Vector2(12, -69)
 
 [connection signal="area_entered" from="Light Area" to="." method="_on_light_area_area_entered"]
 [connection signal="body_entered" from="Light Area" to="." method="_on_light_area_body_entered"]

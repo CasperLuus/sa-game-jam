@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://e34tioa767n2" path="res://Assets/Art/pngtree-black-ring-png-image_2319165.png" id="2_f4bbd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hdwav"]
-radius = 233.855
+radius = 544.328
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y6p01"]
-radius = 1.0
+radius = 2.0
 
 [node name="Lamp" type="Area2D"]
 script = ExtResource("1_nuh4r")
@@ -17,7 +17,7 @@ shape = SubResource("CircleShape2D_hdwav")
 debug_color = Color(0.80265, 0.418527, 0, 0.42)
 
 [node name="Light Boundary" type="Area2D" parent="."]
-position = Vector2(159, -170)
+position = Vector2(415, -345)
 collision_layer = 2
 collision_mask = 2
 
@@ -25,8 +25,8 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_y6p01")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 8)
-scale = Vector2(1.47222, 1.47222)
+position = Vector2(-1.50004, 19.8776)
+scale = Vector2(3.43056, 3.44771)
 texture = ExtResource("2_f4bbd")
 
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -1,6 +1,6 @@
 extends Area2D
 
-var shrink_rate = 0.1
+var shrink_rate = 0.01
 
 func _process(delta):
 	# Gradually decrease the scale over time
