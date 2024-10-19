@@ -1,8 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://cenbovvwhlsh4"]
+[gd_scene load_steps=37 format=3 uid="uid://cenbovvwhlsh4"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qib5o"]
 [ext_resource type="Texture2D" uid="uid://dbdfsirnrcy1m" path="res://Assets/Crow/Idle/frame0000.png" id="2_uf2m0"]
-[ext_resource type="PackedScene" uid="uid://dgxr83e3ogn31" path="res://Scenes/lamp.tscn" id="3_d4dum"]
 [ext_resource type="Texture2D" uid="uid://cw27nbjyowcb3" path="res://Assets/Crow/Idle/frame0001.png" id="3_hok4q"]
 [ext_resource type="Texture2D" uid="uid://ce1kj2ldwvj4h" path="res://Assets/Crow/Idle/frame0002.png" id="4_7570u"]
 [ext_resource type="Texture2D" uid="uid://bu8fgcgeldykb" path="res://Assets/Crow/Idle/frame0003.png" id="5_6ox3d"]
@@ -174,16 +173,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_oets7"]
 radius = 134.766
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0ldpj"]
-radius = 458.157
-
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(68, -444)
 script = ExtResource("1_qib5o")
-
-[node name="Lamp" parent="." instance=ExtResource("3_d4dum")]
-visible = false
-position = Vector2(-21, -113)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-70, -319)
@@ -203,19 +195,10 @@ animation = &"Floating"
 position = Vector2(-140.14, 35.75)
 shape = SubResource("CircleShape2D_oets7")
 
-[node name="Light Area" type="Area2D" parent="."]
-position = Vector2(11, -69)
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Light Area"]
-visible = false
-shape = SubResource("CircleShape2D_0ldpj")
-debug_color = Color(0.621464, 0.353084, 1, 0.42)
-
-[node name="PointLight2D3" type="PointLight2D" parent="."]
+[node name="Light Aura" type="PointLight2D" parent="."]
 position = Vector2(-79, -196)
 scale = Vector2(1.5536, 1.5536)
+enabled = false
 energy = 0.17
 blend_mode = 2
 texture = ExtResource("38_5vxvi")
@@ -223,10 +206,12 @@ offset = Vector2(-12.02, 0)
 texture_scale = 1.94
 
 [node name="Hazard Detection" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazard Detection"]
 position = Vector2(-140.14, 35.75)
 shape = SubResource("CircleShape2D_oets7")
 
-[connection signal="area_entered" from="Light Area" to="." method="_on_light_area_area_entered"]
-[connection signal="body_entered" from="Light Area" to="." method="_on_light_area_body_entered"]
+[connection signal="area_entered" from="Hazard Detection" to="." method="_on_hazard_detection_area_entered"]
+[connection signal="area_exited" from="Hazard Detection" to="." method="_on_hazard_detection_area_exited"]

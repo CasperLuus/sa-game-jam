@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdp1hqbukqr7v"]
+
+[ext_resource type="PackedScene" uid="uid://cenbovvwhlsh4" path="res://Scenes/player.tscn" id="1_dloev"]
+[ext_resource type="PackedScene" uid="uid://cl2juli3o1glw" path="res://Scenes/following_light.tscn" id="2_3mogb"]
+
+[node name="Player And Light" type="CharacterBody2D"]
+
+[node name="Player" parent="." node_paths=PackedStringArray("FOLLOWING_LIGHT") instance=ExtResource("1_dloev")]
+FOLLOWING_LIGHT = NodePath("../FollowingLight")
+
+[node name="FollowingLight" parent="." instance=ExtResource("2_3mogb")]
+position = Vector2(80, -674)

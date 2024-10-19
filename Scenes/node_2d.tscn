@@ -1,17 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://x4jqf11ca6lu"]
+[gd_scene load_steps=5 format=3 uid="uid://x4jqf11ca6lu"]
 
 [ext_resource type="PackedScene" uid="uid://ctee3m6fl62vc" path="res://Scenes/level_1.tscn" id="1_c2hb2"]
-[ext_resource type="PackedScene" uid="uid://cenbovvwhlsh4" path="res://Scenes/player.tscn" id="2_augt1"]
-[ext_resource type="PackedScene" uid="uid://cl2juli3o1glw" path="res://Scenes/following_light.tscn" id="3_h005h"]
+[ext_resource type="PackedScene" uid="uid://cdp1hqbukqr7v" path="res://Scenes/player_and_light.tscn" id="2_nofvq"]
+[ext_resource type="Script" path="res://Scripts/area_2d.gd" id="3_u5k0g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cw5g"]
+size = Vector2(2290, 1295)
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Level 1" parent="." instance=ExtResource("1_c2hb2")]
 
-[node name="Player" parent="." instance=ExtResource("2_augt1")]
-position = Vector2(-14318, 429)
-scale = Vector2(0.75999, 0.75999)
+[node name="Player And Light" parent="." instance=ExtResource("2_nofvq")]
+position = Vector2(-18695, 2971)
 
-[node name="FollowingLight" parent="." node_paths=PackedStringArray("PLAYER") instance=ExtResource("3_h005h")]
-position = Vector2(-14498, 276)
-PLAYER = NodePath("../Player")
+[node name="Camp" type="Area2D" parent="." node_paths=PackedStringArray("PLAYER_AND_LIGHT")]
+position = Vector2(-19162, 3005)
+script = ExtResource("3_u5k0g")
+PLAYER_AND_LIGHT = NodePath("../Player And Light")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camp"]
+position = Vector2(828, -574.5)
+shape = SubResource("RectangleShape2D_1cw5g")
+
+[connection signal="body_entered" from="Camp" to="Camp" method="_on_body_entered"]
+[connection signal="body_exited" from="Camp" to="Camp" method="_on_body_exited"]
+[connection signal="ready" from="Camp" to="Camp" method="_on_ready"]
