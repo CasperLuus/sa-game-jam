@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cenbovvwhlsh4"]
+[gd_scene load_steps=48 format=3 uid="uid://cenbovvwhlsh4"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qib5o"]
 [ext_resource type="Texture2D" uid="uid://c4qv1ets1ijha" path="res://Assets/ThePlaceholder_v1/ThePlaceholder.png" id="1_vrtqx"]
@@ -36,6 +36,10 @@
 [ext_resource type="Texture2D" uid="uid://bfu56l34orlxh" path="res://Assets/Crow/Jump/frame0013.png" id="31_1dd0d"]
 [ext_resource type="Texture2D" uid="uid://b3576sqnjr5vp" path="res://Assets/Crow/Jump/frame0014.png" id="32_wa3i1"]
 [ext_resource type="Texture2D" uid="uid://bbjkjsiuh41ry" path="res://Assets/Crow/Jump/frame0015.png" id="33_efdg2"]
+[ext_resource type="Script" path="res://Scenes/animated_sprite_2d.gd" id="35_5m6lj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2f6oo"]
+radius = 58.0086
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkuje"]
 atlas = ExtResource("1_vrtqx")
@@ -67,32 +71,6 @@ region = Rect2(384, 128, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tvkxi"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("18_d3ypa")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_qq4dp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_efdg2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_jicx7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_1dd0d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("32_wa3i1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_efdg2")
-}],
-"loop": true,
-"name": &"Floating",
-"speed": 12.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_uf2m0")
@@ -226,29 +204,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2f6oo"]
-radius = 126.396
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ldpj"]
 radius = 180.336
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(68, -444)
 script = ExtResource("1_qib5o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-246.6, 107.795)
-zoom = Vector2(0.375, 0.375)
+position = Vector2(40, -146)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_2f6oo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -3)
 sprite_frames = SubResource("SpriteFrames_tvkxi")
 animation = &"Idle"
-frame_progress = 0.639552
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-77, 229)
-shape = SubResource("CircleShape2D_2f6oo")
+script = ExtResource("35_5m6lj")
 
 [node name="Light Area" type="Area2D" parent="."]
 position = Vector2(11, -69)
