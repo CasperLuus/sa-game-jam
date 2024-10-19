@@ -2,9 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://bo565mlbjjenx" path="res://Assets/Scenes/Level1.png" id="1_xrwpb"]
 
-[node name="Level 1" type="Area2D"]
+[node name="StaticBody2D" type="StaticBody2D"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-19253, 3051)
+polygon = PackedVector2Array(422, -1311, 134, -79, 1610, -61, 1795, -53, 2033, -57, 2030, 285, -306, 285)
 
 [node name="Level" type="Sprite2D" parent="."]
 position = Vector2(-5683.38, 16.4996)

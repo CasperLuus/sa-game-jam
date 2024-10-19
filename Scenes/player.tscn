@@ -250,8 +250,7 @@ animation = &"Idle"
 frame_progress = 0.639552
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-65, 221.5)
+position = Vector2(-158, 279)
 shape = SubResource("RectangleShape2D_lsxgg")
 
 [node name="Light Area" type="Area2D" parent="."]

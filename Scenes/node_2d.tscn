@@ -8,4 +8,4 @@
 [node name="Level 1" parent="." instance=ExtResource("1_c2hb2")]
 
 [node name="Player" parent="." instance=ExtResource("2_augt1")]
-position = Vector2(-10711, 1562)
+position = Vector2(-18434, 2315)
