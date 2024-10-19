@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dgxr83e3ogn31"]
 
-[ext_resource type="Script" path="res://Scenes/lamp.gd" id="1_nuh4r"]
+[ext_resource type="Script" path="res://Scripts/lamp.gd" id="1_nuh4r"]
 [ext_resource type="Texture2D" uid="uid://e34tioa767n2" path="res://Assets/Art/pngtree-black-ring-png-image_2319165.png" id="2_f4bbd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hdwav"]
