@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2vvj0grfem50"]
+
+[ext_resource type="Script" path="res://Scripts/spike_hazard.gd" id="1_1grdn"]
+
+[node name="Spike Hazard" type="Area2D"]
+script = ExtResource("1_1grdn")

@@ -1,16 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctee3m6fl62vc"]
+[gd_scene load_steps=5 format=3 uid="uid://ctee3m6fl62vc"]
 
 [ext_resource type="Texture2D" uid="uid://bo565mlbjjenx" path="res://Assets/Scenes/Level1.png" id="1_xrwpb"]
+[ext_resource type="PackedScene" uid="uid://djhlhhwwokyqp" path="res://Scenes/water_hazard.tscn" id="2_c7vpd"]
+[ext_resource type="PackedScene" uid="uid://d2vvj0grfem50" path="res://Scenes/spike_hazard.tscn" id="3_cym74"]
+[ext_resource type="PackedScene" uid="uid://rbueg3thm5qc" path="res://Scenes/pickup.tscn" id="4_hndlm"]
 
 [node name="StaticBody2D" type="StaticBody2D"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-19253, 3051)
-polygon = PackedVector2Array(422, -1311, 134, -79, 1610, -61, 1795, -53, 2033, -57, 2030, 285, -306, 285)
 
 [node name="Level" type="Sprite2D" parent="."]
 position = Vector2(-5683.38, 16.4996)
 scale = Vector2(1.69386, 1.69386)
 texture = ExtResource("1_xrwpb")
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-19253, 3051)
+polygon = PackedVector2Array(422, -1311, 134, -79, 1610, -61, 1795, -53, 7296, -230, 8513, -1010, 9018, -506, 10055, -440, 11044, -516, 11737, -846, 11999, -945, 12716, -227, 12716, -86, 16546, -56, 17287, -288, 17312, 297, -306, 285)
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Hazards" type="Node" parent="."]
+
+[node name="Spike Hazard" parent="Hazards" instance=ExtResource("3_cym74")]
+position = Vector2(-9903, 802)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Spike Hazard"]
+polygon = PackedVector2Array(-4, -3, -112, 52, -319, 78, -709, -18, -947, -24, -1185, -129, -1135, -183, -919, -224, -804, -319, -668, -256, -550, -142, -500, -316, -471, -348, -357, -253, -231, -364, -52, -289, 13, -363, 78, -564, 272, -615, 354, -786, 535, -773, 526, -424, 246, -135)
+
+[node name="Water Hazard" parent="Hazards" instance=ExtResource("2_c7vpd")]
+visible = false
+position = Vector2(-5373, 2589)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Water Hazard"]
+polygon = PackedVector2Array(-34, 7, -1447, 39, -1507, -12, -1590, -28, -1657, 26, -1787, -475, -1844, -475, -1876, -523, -1907, -501, -1968, -631, -1999, -625, -1968, -479, -1888, -415, -1850, -440, -1755, 4, -1704, 74, -1682, 201, -1514, 220, -1288, 229, -1257, 207, -1161, 217, -1164, 401, -244, 353, 531, 350, 785, 360, 1699, 360, 2115, 350, 2182, 337, 2677, 404, 3414, 169, 3563, 83, 3528, 1, 3550, -161, 3645, -171, 3750, -120, 3979, -53, 4268, -21, 4528, -85, 5052, -31, 5122, -107, 5655, -202, 5741, -329, 5677, -371, 5490, -380, 5439, -425, 4506, -386, 3601, -291, 3563, -250, 3487, -2, 3401, -25, 3395, -110, 3356, -234, 2931, -148, 2934, -44, 2601, -63, 807, -18)
+
+[node name="Pickup" parent="." instance=ExtResource("4_hndlm")]
+position = Vector2(-13882, 449)

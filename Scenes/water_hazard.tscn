@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://djhlhhwwokyqp"]
+
+[ext_resource type="Script" path="res://Scripts/water_hazard.gd" id="1_0p7iv"]
+
+[node name="Water Hazard" type="Area2D"]
+script = ExtResource("1_0p7iv")

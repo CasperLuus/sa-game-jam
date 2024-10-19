@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://rbueg3thm5qc"]
+
+[ext_resource type="Script" path="res://Scripts/pickup.gd" id="1_ccjpa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cme2v"]
+
+[node name="Pickup" type="Area2D"]
+script = ExtResource("1_ccjpa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cme2v")
