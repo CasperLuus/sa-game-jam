@@ -226,8 +226,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2f6oo"]
-radius = 126.396
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsxgg"]
+size = Vector2(434, 433)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ldpj"]
 radius = 458.157
@@ -236,19 +236,23 @@ radius = 458.157
 position = Vector2(68, -444)
 script = ExtResource("1_qib5o")
 
+[node name="Lamp" parent="." instance=ExtResource("3_d4dum")]
+position = Vector2(-21, -113)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-246.6, 107.795)
 zoom = Vector2(0.375, 0.375)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(8, -3)
+position = Vector2(-86, 54)
 sprite_frames = SubResource("SpriteFrames_tvkxi")
 animation = &"Idle"
 frame_progress = 0.639552
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-77, 229)
-shape = SubResource("CircleShape2D_2f6oo")
+visible = false
+position = Vector2(-65, 221.5)
+shape = SubResource("RectangleShape2D_lsxgg")
 
 [node name="Light Area" type="Area2D" parent="."]
 position = Vector2(11, -69)
@@ -256,16 +260,15 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Light Area"]
+visible = false
 shape = SubResource("CircleShape2D_0ldpj")
 debug_color = Color(0.621464, 0.353084, 1, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="Light Area"]
+visible = false
 position = Vector2(1.99996, 18)
 scale = Vector2(2.88333, 2.92222)
 texture = ExtResource("3_gdxx3")
-
-[node name="Lamp" parent="." instance=ExtResource("3_d4dum")]
-position = Vector2(12, -69)
 
 [connection signal="area_entered" from="Light Area" to="." method="_on_light_area_area_entered"]
 [connection signal="body_entered" from="Light Area" to="." method="_on_light_area_body_entered"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctee3m6fl62vc"]
+
+[ext_resource type="Texture2D" uid="uid://bo565mlbjjenx" path="res://Assets/Scenes/Level1.png" id="1_xrwpb"]
+
+[node name="Level 1" type="Area2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="Level" type="Sprite2D" parent="."]
+position = Vector2(-5683.38, 16.4996)
+scale = Vector2(1.69386, 1.69386)
+texture = ExtResource("1_xrwpb")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
