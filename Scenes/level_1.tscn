@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://ctee3m6fl62vc"]
 
 [ext_resource type="Texture2D" uid="uid://diy4nh0i7kcl3" path="res://Assets/Scenes/Level1BLHS.png" id="1_0jvfp"]
-[ext_resource type="PackedScene" path="res://Scenes/water_hazard.tscn" id="2_c7vpd"]
-[ext_resource type="PackedScene" path="res://Scenes/spike_hazard.tscn" id="3_cym74"]
+[ext_resource type="PackedScene" uid="uid://63bjp6tfld8k" path="res://Scenes/water_hazard.tscn" id="2_c7vpd"]
+[ext_resource type="PackedScene" uid="uid://eillgvrrum7p" path="res://Scenes/spike_hazard.tscn" id="3_cym74"]
 [ext_resource type="PackedScene" uid="uid://dhikjeodc5lrl" path="res://Scenes/pickup.tscn" id="4_hndlm"]
 [ext_resource type="Texture2D" uid="uid://dgkfd25gqtbda" path="res://Assets/Light/Fire.png" id="5_hkg03"]
 [ext_resource type="Texture2D" uid="uid://dlf7cd1k08ydf" path="res://Assets/Scenes/Level1BC.png" id="5_im7wc"]
