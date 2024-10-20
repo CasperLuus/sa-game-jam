@@ -12,7 +12,7 @@ size = Vector2(2290, 1295)
 [node name="Level 1" parent="." instance=ExtResource("1_c2hb2")]
 
 [node name="Player And Light" parent="." instance=ExtResource("2_nofvq")]
-position = Vector2(-18695, 2971)
+position = Vector2(-18678, 2920)
 
 [node name="Camp" type="Area2D" parent="." node_paths=PackedStringArray("PLAYER_AND_LIGHT")]
 position = Vector2(-19162, 3005)

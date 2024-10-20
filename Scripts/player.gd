@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var light_aura: PointLight2D = $"Light Aura"
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -850.0
@@ -10,7 +11,8 @@ extends CharacterBody2D
 @export var FOLLOWING_LIGHT_ACCELERATION = 100
 @export var FOLLOWING_LIGHT_POS_OFFSET: Vector2
 @export var FOLLOWING_LIGHT_SHRINK_BOOL = false
-@export var FOLLOWING_LIGHT_SHRINK_MULTIPLIER = 1
+@export var FOLLOWING_LIGHT_USE_MULTIPLIER_BOOL = false
+const FOLLOWING_LIGHT_SHRINK_MULTIPLIER = 1.2
 const FOLLOWING_LIGHT_SHRINK_RATE = 0.01
 
 func _ready() -> void:
@@ -75,13 +77,11 @@ func _on_hazard_detection_area_entered(area: Area2D) -> void:
 	if area.name == "Spike Hazard":
 		_handle_player_death()
 	elif area.name == "Water Hazard":
-		print("less death")
-		FOLLOWING_LIGHT_SHRINK_MULTIPLIER = 1.1
+		FOLLOWING_LIGHT_USE_MULTIPLIER_BOOL = true
 
 func _on_hazard_detection_area_exited(area: Area2D) -> void:
 	if area.name == "Water Hazard":
-		print("less death")
-		FOLLOWING_LIGHT_SHRINK_MULTIPLIER = 1
+		FOLLOWING_LIGHT_USE_MULTIPLIER_BOOL = false
 
 func _shrink_following_light(delta):
 	# Gradually decrease the scale over time
@@ -106,5 +106,10 @@ func _handle_player_death():
 	light_aura.enabled = false
 	#wait a moment
 	await tree.create_timer(2).timeout
+	#hide the character
+	animated_sprite.visible = false
+	#music goes off
+	#wait a moment
+	await tree.create_timer(3).timeout
 	#reset scene
 	tree.reload_current_scene()
