@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 @export var FOLLOWING_LIGHT: CharacterBody2D
 @export var FOLLOWING_LIGHT_SPEED = 410
+@export var FOLLOWING_LIGHT_ACCELERATION = 100
 @export var FOLLOWING_LIGHT_POS_OFFSET: Vector2
 @export var FOLLOWING_LIGHT_SHRINK_BOOL = false
 @export var FOLLOWING_LIGHT_SHRINK_MULTIPLIER = 1
@@ -17,7 +18,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	_physics_process(delta)
-	_move_following_light()
+	_move_following_light(delta)
 	if FOLLOWING_LIGHT_SHRINK_BOOL:
 		_shrink_following_light(delta)
 
@@ -54,9 +55,19 @@ func _physics_process(delta: float) -> void:
 	$AnimatedSprite2D.play()
 	move_and_slide()
 
-func _move_following_light() -> void:
-	FOLLOWING_LIGHT.velocity = FOLLOWING_LIGHT.position.direction_to(position + 
-		FOLLOWING_LIGHT_POS_OFFSET) * FOLLOWING_LIGHT_SPEED 
+func _move_following_light(delta: float) -> void:
+	var direction = FOLLOWING_LIGHT.position.direction_to(position + FOLLOWING_LIGHT_POS_OFFSET)
+	FOLLOWING_LIGHT.velocity += direction * FOLLOWING_LIGHT_ACCELERATION * delta
+	if (direction.x > 0):
+		FOLLOWING_LIGHT.velocity.x = min(FOLLOWING_LIGHT.velocity.x, FOLLOWING_LIGHT_SPEED)
+	else: 
+		FOLLOWING_LIGHT.velocity.x = max(FOLLOWING_LIGHT.velocity.x, -FOLLOWING_LIGHT_SPEED)
+		
+	if (direction.y > 0):
+		FOLLOWING_LIGHT.velocity.y = min(FOLLOWING_LIGHT.velocity.y, FOLLOWING_LIGHT_SPEED)
+	else: 
+		FOLLOWING_LIGHT.velocity.y = max(FOLLOWING_LIGHT.velocity.y, -FOLLOWING_LIGHT_SPEED)
+		
 	FOLLOWING_LIGHT.move_and_slide()
 
 func _on_hazard_detection_area_entered(area: Area2D) -> void:
