@@ -6,26 +6,27 @@ extends CharacterBody2D
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -850.0
 
-@export var FOLLOWING_LIGHT: CharacterBody2D
-@export var FOLLOWING_LIGHT_SPEED = 410
-@export var FOLLOWING_LIGHT_ACCELERATION = 100
-@export var FOLLOWING_LIGHT_POS_OFFSET: Vector2
-@export var FOLLOWING_LIGHT_SHRINK_BOOL = false
-@export var FOLLOWING_LIGHT_USE_MULTIPLIER_BOOL = false
+var IS_SLEEPING: bool = false
+var HAS_STARTED_DAY: bool = false
 
-const FOLLOWING_LIGHT_MIN_SIZE = 0.05
-const FOLLOWING_LIGHT_MAX_SIZE = 0.8
-const FOLLOWING_LIGHT_SHRINK_MULTIPLIER = 1.5
-const FOLLOWING_LIGHT_SHRINK_RATE = 0.001
+@export var FOLLOWING_LIGHT: CharacterBody2D
 
 func _ready() -> void:
-	FOLLOWING_LIGHT.position = position + FOLLOWING_LIGHT_POS_OFFSET
+	FOLLOWING_LIGHT.visible = false
+	_play_sleeping_animation()
+	FOLLOWING_LIGHT.position = position + FOLLOWING_LIGHT.POS_OFFSET
 	
 func _process(delta: float) -> void:
-	_physics_process(delta)
-	_move_following_light(delta)
-	if FOLLOWING_LIGHT_SHRINK_BOOL:
-		_shrink_following_light(delta)
+	if not HAS_STARTED_DAY:
+		_play_sleeping_animation()
+		if Input.is_action_just_pressed("move_up"):
+			SPEED = 300
+			HAS_STARTED_DAY = true
+	else:
+		_physics_process(delta)
+		_move_following_light(delta)
+		if IS_SLEEPING:
+			_handle_player_sleeping()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -61,17 +62,17 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _move_following_light(delta: float) -> void:
-	var direction = FOLLOWING_LIGHT.position.direction_to(position + FOLLOWING_LIGHT_POS_OFFSET)
-	FOLLOWING_LIGHT.velocity += direction * FOLLOWING_LIGHT_ACCELERATION * delta
+	var direction = FOLLOWING_LIGHT.position.direction_to(position + FOLLOWING_LIGHT.POS_OFFSET)
+	FOLLOWING_LIGHT.velocity += direction * FOLLOWING_LIGHT.ACCELERATION * delta
 	if (direction.x > 0):
-		FOLLOWING_LIGHT.velocity.x = min(FOLLOWING_LIGHT.velocity.x, FOLLOWING_LIGHT_SPEED)
+		FOLLOWING_LIGHT.velocity.x = min(FOLLOWING_LIGHT.velocity.x, FOLLOWING_LIGHT.SPEED)
 	else: 
-		FOLLOWING_LIGHT.velocity.x = max(FOLLOWING_LIGHT.velocity.x, -FOLLOWING_LIGHT_SPEED)
+		FOLLOWING_LIGHT.velocity.x = max(FOLLOWING_LIGHT.velocity.x, -FOLLOWING_LIGHT.SPEED)
 		
 	if (direction.y > 0):
-		FOLLOWING_LIGHT.velocity.y = min(FOLLOWING_LIGHT.velocity.y, FOLLOWING_LIGHT_SPEED)
+		FOLLOWING_LIGHT.velocity.y = min(FOLLOWING_LIGHT.velocity.y, FOLLOWING_LIGHT.SPEED)
 	else: 
-		FOLLOWING_LIGHT.velocity.y = max(FOLLOWING_LIGHT.velocity.y, -FOLLOWING_LIGHT_SPEED)
+		FOLLOWING_LIGHT.velocity.y = max(FOLLOWING_LIGHT.velocity.y, -FOLLOWING_LIGHT.SPEED)
 		
 	FOLLOWING_LIGHT.move_and_slide()
 
@@ -79,25 +80,27 @@ func _on_hazard_detection_area_entered(area: Area2D) -> void:
 	if area.name.contains("Spike Hazard"):
 		_handle_player_death()
 	elif area.name.contains("Water Hazard"):
-		FOLLOWING_LIGHT_USE_MULTIPLIER_BOOL = true
+		FOLLOWING_LIGHT.SHOULD_USE_MULTIPLIER = true
 
 func _on_hazard_detection_area_exited(area: Area2D) -> void:
 	if area.name == "Water Hazard":
-		FOLLOWING_LIGHT_USE_MULTIPLIER_BOOL = false
+		FOLLOWING_LIGHT.SHOULD_USE_MULTIPLIER = false
 
-func _shrink_following_light(delta):
-	# Gradually decrease the scale over time
-	if FOLLOWING_LIGHT.scale.x > 0.05:
-		var shrink_size = FOLLOWING_LIGHT_SHRINK_RATE * FOLLOWING_LIGHT_SHRINK_MULTIPLIER
-		FOLLOWING_LIGHT.scale -= Vector2(shrink_size, shrink_size) * delta
-	elif FOLLOWING_LIGHT.scale.x <= 0.05:
-		_handle_player_death()
+func _play_sleeping_animation():
+	SPEED = 0
+	$AnimatedSprite2D.animation = "Sleep"
+	$AnimatedSprite2D.play()
+
+func _handle_player_sleeping():
+	_play_sleeping_animation()
+	GameManager._move_to_next_day()
 
 func _handle_player_death():
 	#set speed to 0
 	SPEED = 0
+	JUMP_VELOCITY = 0
 	#make light min size
-	FOLLOWING_LIGHT.scale = Vector2(0.05, 0.05)
+	FOLLOWING_LIGHT.scale = Vector2(FOLLOWING_LIGHT.MIN_SIZE, FOLLOWING_LIGHT.MIN_SIZE)
 	#wait a moment
 	var tree = get_tree()
 	await tree.create_timer(2).timeout

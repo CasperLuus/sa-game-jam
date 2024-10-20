@@ -17,3 +17,8 @@ func _deferred_switch_scene(scene_path):
 	current_scene = s.instantiate()
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene
+
+func _move_to_next_day():
+	_switch_scene("res://Scenes/black_scene.tscn")
+	await get_tree().create_timer(3).timeout
+	_switch_scene("res://Scenes/level_1.tscn")
