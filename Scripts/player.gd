@@ -12,6 +12,7 @@ extends CharacterBody2D
 @export var FOLLOWING_LIGHT_POS_OFFSET: Vector2
 @export var FOLLOWING_LIGHT_SHRINK_BOOL = false
 @export var FOLLOWING_LIGHT_USE_MULTIPLIER_BOOL = false
+
 const FOLLOWING_LIGHT_MIN_SIZE = 0.05
 const FOLLOWING_LIGHT_MAX_SIZE = 0.8
 const FOLLOWING_LIGHT_SHRINK_MULTIPLIER = 1.5
@@ -42,13 +43,13 @@ func _physics_process(delta: float) -> void:
 	$AnimatedSprite2D.flip_h = velocity.x < 0
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("move_up") and is_on_floor():
 		#print("Jumped")
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
 		#print("Moving")
 		velocity.x = direction * SPEED

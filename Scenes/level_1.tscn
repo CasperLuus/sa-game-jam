@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://ctee3m6fl62vc"]
+[gd_scene load_steps=82 format=3 uid="uid://ctee3m6fl62vc"]
 
 [ext_resource type="Texture2D" uid="uid://diy4nh0i7kcl3" path="res://Assets/Scenes/Level1BLHS.png" id="1_0jvfp"]
 [ext_resource type="PackedScene" uid="uid://63bjp6tfld8k" path="res://Scenes/water_hazard.tscn" id="2_c7vpd"]
@@ -70,10 +70,12 @@
 [ext_resource type="Texture2D" uid="uid://d4a4k2y546kah" path="res://Assets/Scenes/Foreground/AnimatedFire/2/1_59.png" id="67_aiuaq"]
 [ext_resource type="Texture2D" uid="uid://ddhpmutvgniji" path="res://Assets/Scenes/Foreground/AnimatedFire/2/1_60.png" id="68_b48op"]
 [ext_resource type="Texture2D" uid="uid://81rhar2k01m8" path="res://Assets/Scenes/Foreground/Nest.png" id="69_bj8b1"]
-[ext_resource type="PackedScene" uid="uid://cxhats6ntngh" path="res://Scenes/camp.tscn" id="69_j8427"]
 [ext_resource type="Texture2D" uid="uid://djbve2wc1lge7" path="res://Assets/Scenes/Foreground/HoleSnoot.png" id="70_ltbtd"]
-[ext_resource type="PackedScene" uid="uid://cdp1hqbukqr7v" path="res://Scenes/player_and_light.tscn" id="72_x5cgk"]
 [ext_resource type="Texture2D" uid="uid://ka6dc7hl777m" path="res://Assets/Scenes/Foreground/HoleShoot2.png" id="73_gid1i"]
+[ext_resource type="Script" path="res://Scripts/camp.gd" id="74_ug4cu"]
+[ext_resource type="Script" path="res://Scripts/nest.gd" id="75_7kr38"]
+[ext_resource type="PackedScene" uid="uid://cenbovvwhlsh4" path="res://Scenes/player.tscn" id="76_86d7b"]
+[ext_resource type="PackedScene" uid="uid://cl2juli3o1glw" path="res://Scenes/following_light.tscn" id="77_u7fx8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lj0vn"]
 
@@ -270,6 +272,12 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jrio0"]
+size = Vector2(2290, 1295)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wtwq"]
+size = Vector2(492, 118)
+
 [node name="Level 1" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
@@ -341,8 +349,6 @@ position = Vector2(-18867.3, 2747.82)
 scale = Vector2(1.36779, 1.36779)
 texture = ExtResource("69_bj8b1")
 metadata/_edit_lock_ = true
-
-[node name="Camp" parent="." instance=ExtResource("69_j8427")]
 
 [node name="Colliders" type="StaticBody2D" parent="."]
 visible = false
@@ -749,6 +755,7 @@ metadata/_edit_lock_ = true
 
 [node name="Spike Hazard" parent="Hazards" instance=ExtResource("3_cym74")]
 position = Vector2(-10004.3, 801.818)
+script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Spike Hazard"]
@@ -758,6 +765,7 @@ metadata/_edit_lock_ = true
 
 [node name="Water Hazard" parent="Hazards" instance=ExtResource("2_c7vpd")]
 position = Vector2(-5474.27, 2588.82)
+script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Water Hazard"]
@@ -765,6 +773,7 @@ polygon = PackedVector2Array(-1228.73, 36.1799, -1451.73, -56.8201, -1564.73, -8
 metadata/_edit_lock_ = true
 
 [node name="Spike Hazard2" parent="Hazards" instance=ExtResource("3_cym74")]
+script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Spike Hazard2"]
@@ -772,6 +781,7 @@ polygon = PackedVector2Array(1843, 2439, 2049, 2218, 2074, 2201, 2125, 2241, 220
 metadata/_edit_lock_ = true
 
 [node name="Spike Hazard3" parent="Hazards" instance=ExtResource("3_cym74")]
+script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Spike Hazard3"]
@@ -780,6 +790,7 @@ polygon = PackedVector2Array(3005, 2301, 3139, 1968, 3491, 1964, 3777, 2041, 414
 metadata/_edit_lock_ = true
 
 [node name="Spike Hazard4" parent="Hazards" instance=ExtResource("3_cym74")]
+script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Spike Hazard4"]
@@ -788,6 +799,7 @@ polygon = PackedVector2Array(4831, 1907, 5117, 2041, 5539, 2076, 5702, 2009, 586
 metadata/_edit_lock_ = true
 
 [node name="Water Hazard2" parent="Hazards" instance=ExtResource("2_c7vpd")]
+script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Water Hazard2"]
@@ -795,8 +807,40 @@ position = Vector2(-81, -4)
 polygon = PackedVector2Array(2167, -2077, 2157, -2241, 2633, -2248, 2651, -2094, 2383, -2077, 2371, -1501, 2511, -1453, 2435, -1233, 1823, -1183, 1802, -984, 1696, -954, 1637, -905, 1584, -802, 1591, -671, 1527, -506, 1246, -467, 1097, -465, 853, -478, 756, -502, 563, -521, 553, -292, 551, -163, 540, 2324, 182, 2330, 277, -611, 304, -709, 364, -735, 662, -735, 1470, -747, 1511, -785, 1562, -926, 1524, -992, 1741, -1065, 1758, -1337, 1776, -1455, 2345, -1498, 2347, -2072)
 metadata/_edit_lock_ = true
 
-[node name="Player And Light" parent="." instance=ExtResource("72_x5cgk")]
-position = Vector2(-18850, 2797)
+[node name="Player And Light" type="Node2D" parent="."]
+
+[node name="FollowingLight" parent="Player And Light" instance=ExtResource("77_u7fx8")]
+position = Vector2(-16035, 2156)
+
+[node name="Player" parent="Player And Light" node_paths=PackedStringArray("FOLLOWING_LIGHT") instance=ExtResource("76_86d7b")]
+position = Vector2(-18823, 2464)
+FOLLOWING_LIGHT = NodePath("../FollowingLight")
+
+[node name="Camp" type="Area2D" parent="."]
+position = Vector2(-11733, 20)
+script = ExtResource("74_ug4cu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camp"]
+position = Vector2(-6816, 2448)
+shape = SubResource("RectangleShape2D_jrio0")
+
+[node name="Nest" type="Area2D" parent="Camp"]
+position = Vector2(583, -259)
+script = ExtResource("75_7kr38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camp/Nest"]
+position = Vector2(-7728, 2726)
+shape = SubResource("RectangleShape2D_8wtwq")
+
+[node name="Sleep Prompt" type="RichTextLabel" parent="Camp/Nest"]
+offset_left = -7652.0
+offset_top = 2546.0
+offset_right = -7324.0
+offset_bottom = 2611.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Press X to Sleep"
+tab_size = 8
+metadata/_edit_use_anchors_ = true
 
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 100
@@ -815,3 +859,8 @@ position = Vector2(1432, -3741)
 scale = Vector2(1.68, 1.68)
 texture = ExtResource("73_gid1i")
 metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="Camp" to="Camp" method="_on_body_entered"]
+[connection signal="body_exited" from="Camp" to="Camp" method="_on_body_exited"]
+[connection signal="body_entered" from="Camp/Nest" to="Camp/Nest" method="_on_body_entered"]
+[connection signal="body_exited" from="Camp/Nest" to="Camp/Nest" method="_on_body_exited"]
