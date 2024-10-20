@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://tkwcwhitaxfw"]
+[gd_scene load_steps=19 format=3 uid="uid://tkwcwhitaxfw"]
 
 [ext_resource type="Script" path="res://Scripts/core_memories.gd" id="1_0ilnl"]
 [ext_resource type="Texture2D" uid="uid://d2w6oofuopaq3" path="res://Assets/Core Memory Sprite/Star.png" id="2_n3tb1"]
+[ext_resource type="Texture2D" uid="uid://migklweetmwc" path="res://Assets/Core Memory Sprite/corememory light.png" id="3_qnb05"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kw3m4"]
 atlas = ExtResource("2_n3tb1")
@@ -122,5 +123,9 @@ position = Vector2(2, 30)
 shape = SubResource("CapsuleShape2D_ny57u")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 19)
+shadow_enabled = true
+texture = ExtResource("3_qnb05")
+texture_scale = 3.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
