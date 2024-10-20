@@ -11,8 +11,9 @@ extends CharacterBody2D
 @export var FOLLOWING_LIGHT_ACCELERATION = 100
 @export var FOLLOWING_LIGHT_POS_OFFSET: Vector2
 @export var FOLLOWING_LIGHT_SHRINK_BOOL = false
-@export var FOLLOWING_LIGHT_SHRINK_MULTIPLIER = 1
-const FOLLOWING_LIGHT_SHRINK_RATE = 0.001
+@export var FOLLOWING_LIGHT_USE_MULTIPLIER_BOOL = false
+const FOLLOWING_LIGHT_SHRINK_MULTIPLIER = 1.2
+const FOLLOWING_LIGHT_SHRINK_RATE = 0.01
 
 func _ready() -> void:
 	FOLLOWING_LIGHT.position = position + FOLLOWING_LIGHT_POS_OFFSET
@@ -76,13 +77,11 @@ func _on_hazard_detection_area_entered(area: Area2D) -> void:
 	if area.name == "Spike Hazard":
 		_handle_player_death()
 	elif area.name == "Water Hazard":
-		print("less death")
-		FOLLOWING_LIGHT_SHRINK_MULTIPLIER = 1.1
+		FOLLOWING_LIGHT_USE_MULTIPLIER_BOOL = true
 
 func _on_hazard_detection_area_exited(area: Area2D) -> void:
 	if area.name == "Water Hazard":
-		print("less death")
-		FOLLOWING_LIGHT_SHRINK_MULTIPLIER = 1
+		FOLLOWING_LIGHT_USE_MULTIPLIER_BOOL = false
 
 func _shrink_following_light(delta):
 	# Gradually decrease the scale over time
