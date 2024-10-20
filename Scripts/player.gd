@@ -75,9 +75,9 @@ func _move_following_light(delta: float) -> void:
 	FOLLOWING_LIGHT.move_and_slide()
 
 func _on_hazard_detection_area_entered(area: Area2D) -> void:
-	if area.name == "Spike Hazard":
+	if area.name.contains("Spike Hazard"):
 		_handle_player_death()
-	elif area.name == "Water Hazard":
+	elif area.name.contains("Water Hazard"):
 		FOLLOWING_LIGHT_USE_MULTIPLIER_BOOL = true
 
 func _on_hazard_detection_area_exited(area: Area2D) -> void:
