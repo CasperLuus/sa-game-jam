@@ -244,7 +244,7 @@ position = Vector2(-246.6, 107.795)
 zoom = Vector2(0.375, 0.375)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-86, 54)
+position = Vector2(-46, -207)
 sprite_frames = SubResource("SpriteFrames_tvkxi")
 animation = &"Idle"
 frame_progress = 0.639552

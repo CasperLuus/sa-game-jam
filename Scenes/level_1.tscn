@@ -23,7 +23,6 @@ position = Vector2(-9903, 802)
 polygon = PackedVector2Array(-4, -3, -112, 52, -319, 78, -709, -18, -947, -24, -1185, -129, -1135, -183, -919, -224, -804, -319, -668, -256, -550, -142, -500, -316, -471, -348, -357, -253, -231, -364, -52, -289, 13, -363, 78, -564, 272, -615, 354, -786, 535, -773, 526, -424, 246, -135)
 
 [node name="Water Hazard" parent="Hazards" instance=ExtResource("2_c7vpd")]
-visible = false
 position = Vector2(-5373, 2589)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Water Hazard"]
