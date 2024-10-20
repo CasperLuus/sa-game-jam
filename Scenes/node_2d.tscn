@@ -1,16 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://x4jqf11ca6lu"]
+[gd_scene load_steps=7 format=3 uid="uid://x4jqf11ca6lu"]
 
 [ext_resource type="PackedScene" uid="uid://ctee3m6fl62vc" path="res://Scenes/level_1.tscn" id="1_c2hb2"]
 [ext_resource type="PackedScene" uid="uid://cdp1hqbukqr7v" path="res://Scenes/player_and_light.tscn" id="2_nofvq"]
 [ext_resource type="Script" path="res://Scripts/scene_1.gd" id="3_u5k0g"]
-[ext_resource type="PackedScene" uid="uid://ck15gssj1g4nv" path="res://Scenes/bug_1.tscn" id="4_uwlp7"]
-[ext_resource type="PackedScene" uid="uid://bc14s47bdrss" path="res://Scenes/bug_2.tscn" id="5_muinc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cw5g"]
-size = Vector2(2290, 1295)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3snls"]
-size = Vector2(492, 224)
+[ext_resource type="PackedScene" uid="uid://cxhats6ntngh" path="res://Scenes/camp.tscn" id="4_d2777"]
+[ext_resource type="PackedScene" path="res://Scenes/bug_1.tscn" id="4_uwlp7"]
+[ext_resource type="PackedScene" path="res://Scenes/bug_2.tscn" id="5_muinc"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("3_u5k0g")
@@ -20,39 +15,10 @@ script = ExtResource("3_u5k0g")
 [node name="Player And Light" parent="." instance=ExtResource("2_nofvq")]
 position = Vector2(-18819, 2807)
 
-[node name="Camp" type="Area2D" parent="."]
-position = Vector2(-19162, 3005)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camp"]
-position = Vector2(828, -574.5)
-shape = SubResource("RectangleShape2D_1cw5g")
-
-[node name="Nest" type="Area2D" parent="."]
-position = Vector2(-18579, 2746)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Nest"]
-position = Vector2(-241, -103)
-shape = SubResource("RectangleShape2D_3snls")
-
-[node name="Sleep Prompt" type="RichTextLabel" parent="Nest"]
-offset_left = -170.0
-offset_top = -448.0
-offset_right = 158.0
-offset_bottom = -383.0
-theme_override_font_sizes/normal_font_size = 40
-text = "Press X to Sleep"
-tab_size = 8
+[node name="Camp" parent="." instance=ExtResource("4_d2777")]
 
 [node name="Bug 1" parent="." instance=ExtResource("4_uwlp7")]
 position = Vector2(-16077, 2949)
 
 [node name="Bug_2" parent="." instance=ExtResource("5_muinc")]
 position = Vector2(-15708, 2944)
-
-[connection signal="body_entered" from="Camp" to="." method="_on_camp_body_entered"]
-[connection signal="body_entered" from="Camp" to="Camp" method="_on_body_entered"]
-[connection signal="body_exited" from="Camp" to="." method="_on_camp_body_exited"]
-[connection signal="body_exited" from="Camp" to="Camp" method="_on_body_exited"]
-[connection signal="ready" from="Camp" to="Camp" method="_on_ready"]
-[connection signal="body_entered" from="Nest" to="." method="_on_nest_body_entered"]
-[connection signal="body_exited" from="Nest" to="." method="_on_nest_body_exited"]

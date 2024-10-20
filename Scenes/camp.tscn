@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxhats6ntngh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cw5g"]
+size = Vector2(2290, 1295)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3snls"]
+size = Vector2(492, 224)
+
+[node name="Camp" type="Area2D"]
+position = Vector2(-19162, 3005)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(828, -574.5)
+shape = SubResource("RectangleShape2D_1cw5g")
+
+[node name="Nest" type="Area2D" parent="."]
+position = Vector2(583, -259)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nest"]
+position = Vector2(-241, -103)
+shape = SubResource("RectangleShape2D_3snls")
+
+[node name="Sleep Prompt" type="RichTextLabel" parent="Nest"]
+offset_left = -170.0
+offset_top = -448.0
+offset_right = 158.0
+offset_bottom = -383.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Press X to Sleep"
+tab_size = 8
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="ready" from="." to="." method="_on_ready"]
