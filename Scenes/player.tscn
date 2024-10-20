@@ -226,8 +226,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsxgg"]
-size = Vector2(434, 433)
+[sub_resource type="CircleShape2D" id="CircleShape2D_oets7"]
+radius = 134.766
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ldpj"]
 radius = 458.157
@@ -250,8 +250,8 @@ animation = &"Idle"
 frame_progress = 0.639552
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-158, 279)
-shape = SubResource("RectangleShape2D_lsxgg")
+position = Vector2(-141, 284)
+shape = SubResource("CircleShape2D_oets7")
 
 [node name="Light Area" type="Area2D" parent="."]
 position = Vector2(11, -69)

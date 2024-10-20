@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 @export var SPEED = 300.0
-@export var JUMP_VELOCITY = -400.0
+@export var JUMP_VELOCITY = -850.0
 
 @onready var lamp: Area2D = $Lamp
 
@@ -14,14 +14,16 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		#print("Airtime")
 		$AnimatedSprite2D.animation = "Floating"
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta * 0.5
 	elif velocity.is_zero_approx():
 		#print("Idle")
 		$AnimatedSprite2D.animation = "Idle"
 	else:
 		#print("Bouncing")
 		$AnimatedSprite2D.animation = "Jump"	
-		
+	
+	$AnimatedSprite2D.flip_h = velocity.x < 0
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		#print("Jumped")
