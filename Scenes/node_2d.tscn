@@ -16,13 +16,12 @@ script = ExtResource("3_u5k0g")
 [node name="Level 1" parent="." instance=ExtResource("1_c2hb2")]
 
 [node name="Player And Light" parent="." instance=ExtResource("2_nofvq")]
-position = Vector2(-18817, 2869)
+position = Vector2(-18819, 2807)
 
 [node name="Camp" type="Area2D" parent="."]
 position = Vector2(-19162, 3005)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camp"]
-visible = false
 position = Vector2(828, -574.5)
 shape = SubResource("RectangleShape2D_1cw5g")
 
