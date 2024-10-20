@@ -7,5 +7,13 @@
 
 [node name="Level 1" parent="." instance=ExtResource("1_c2hb2")]
 
+[node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="Level 1"]
+position = Vector2(-1432.74, -2568.67)
+polygon = PackedVector2Array(-68.2573, -11.3254, -220.257, 45.6746, -220.257, 129.675, -68.2573, 158.675, 305.743, 95.6746, 305.743, -0.325439, 33.7427, -51.3254)
+
+[node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="Level 1"]
+position = Vector2(-867.057, -2975.97)
+polygon = PackedVector2Array(-27.9429, 10.9683, -107.943, 67.9683, -78.9429, 186.968, 51.0571, 197.968, 96.0571, 169.968, 107.057, 5.96826)
+
 [node name="Player" parent="." instance=ExtResource("2_augt1")]
-position = Vector2(-13198, 67)
+position = Vector2(-18263, 2354)
