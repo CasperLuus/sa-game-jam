@@ -7,42 +7,50 @@ extends Node2D
 
 var player
 var light
-var PLAYER_POINT_LIGHT: PointLight2D
-var LIGHT_POINT_LIGHT: PointLight2D
+var light_point_light: PointLight2D
 
 var IS_IN_CAMP = false
 var SLEEP_ENABLED_BOOL = false
 
 func _on_ready() -> void:
-	player = player_and_light.get_child(0)
-	light = player_and_light.get_child(1)
-	
-	PLAYER_POINT_LIGHT = player.get_child(3) 
-	LIGHT_POINT_LIGHT = light.get_child(0)
+	_get_player_and_light()
 
 func _process(delta: float) -> void:
 	if light and player:
-		if light.scale.x < 0.8 and LIGHT_POINT_LIGHT.visible and not player.FOLLOWING_LIGHT_SHRINK_BOOL:
-			light.scale += Vector2(1, 1) * GROW_RATE * delta
-		else: 
-			player.FOLLOWING_LIGHT_SHRINK_BOOL = LIGHT_POINT_LIGHT.visible
+		if IS_IN_CAMP:
+			if light.scale.x > 0.05:
+				light.scale -= Vector2(1, 1) * GROW_RATE * delta
+			else:
+				light_point_light.visible = false
+		else:
+			if light.scale.x < 0.8 and light_point_light.visible and not player.FOLLOWING_LIGHT_SHRINK_BOOL:
+				light.scale += Vector2(1, 1) * GROW_RATE * delta
+			else: 
+				player.FOLLOWING_LIGHT_SHRINK_BOOL = light_point_light.visible
+			
+func _get_player_and_light():
+	player = player_and_light.get_child(0)
+	light = player_and_light.get_child(1)
+	light_point_light = light.get_child(0)
 
 func _on_camp_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
+		if not light or not player:
+			_get_player_and_light()
+		
 		IS_IN_CAMP = true
-		if light:
-			LIGHT_POINT_LIGHT.visible = false
-		if player:
-			player.FOLLOWING_LIGHT_SHRINK_BOOL = false
+		player.FOLLOWING_LIGHT_SHRINK_BOOL = false
 
 func _on_camp_body_exited(body: Node2D) -> void:
 	# I was trying to make the light start smaller when leaving the cave home, but its not working for some reason.
 	# im going to bed now, this is laters problem
-	print(body.name)
 	if body.name == "Player":
-		if light:
-			light.scale = Vector2(0.05, 0.05)
-			LIGHT_POINT_LIGHT.visible = true
+		if not light or not player:
+			_get_player_and_light()
+		
+		IS_IN_CAMP = false
+		light.scale = Vector2(0.05, 0.05)
+		light_point_light.visible = true
 
 func _on_nest_body_entered(body: Node2D) -> void:
 	sleep_prompt.visible = true
