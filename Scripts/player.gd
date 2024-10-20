@@ -12,6 +12,8 @@ extends CharacterBody2D
 @export var FOLLOWING_LIGHT_POS_OFFSET: Vector2
 @export var FOLLOWING_LIGHT_SHRINK_BOOL = false
 @export var FOLLOWING_LIGHT_USE_MULTIPLIER_BOOL = false
+const FOLLOWING_LIGHT_MIN_SIZE = 0.05
+const FOLLOWING_LIGHT_MAX_SIZE = 0.8
 const FOLLOWING_LIGHT_SHRINK_MULTIPLIER = 1.5
 const FOLLOWING_LIGHT_SHRINK_RATE = 0.001
 
@@ -73,7 +75,6 @@ func _move_following_light(delta: float) -> void:
 	FOLLOWING_LIGHT.move_and_slide()
 
 func _on_hazard_detection_area_entered(area: Area2D) -> void:
-	print(area.name)
 	if area.name == "Spike Hazard":
 		_handle_player_death()
 	elif area.name == "Water Hazard":
@@ -102,8 +103,8 @@ func _handle_player_death():
 	#play shatter sound
 	#screen goes black
 	#ideally both at the same time
-	FOLLOWING_LIGHT.get_child(0).enabled = false
-	light_aura.enabled = false
+	FOLLOWING_LIGHT.get_child(0).visible = false
+	light_aura.visible = false
 	#wait a moment
 	await tree.create_timer(2).timeout
 	#hide the character

@@ -3,14 +3,13 @@ extends Node2D
 @onready var sleep_prompt: RichTextLabel = $"Nest/Sleep Prompt"
 @onready var player_and_light: CharacterBody2D = $"Player And Light"
 
-@export var GROW_RATE: float = 0.8;
+var GROW_RATE: float = 0.8;
+var IS_IN_CAMP = false
+var SLEEP_ENABLED_BOOL = false
 
 var player
 var light
 var light_point_light: PointLight2D
-
-var IS_IN_CAMP = false
-var SLEEP_ENABLED_BOOL = false
 
 func _on_ready() -> void:
 	_get_player_and_light()
@@ -18,13 +17,13 @@ func _on_ready() -> void:
 func _process(delta: float) -> void:
 	if light and player:
 		if IS_IN_CAMP:
-			if light.scale.x > 0.05:
-				light.scale -= Vector2(1, 1) * GROW_RATE * delta
+			if light.scale.x > player.FOLLOWING_LIGHT_MIN_SIZE:
+				light.scale -= Vector2(GROW_RATE, GROW_RATE) * delta
 			else:
 				light_point_light.visible = false
 		else:
-			if light.scale.x < 0.8 and light_point_light.visible and not player.FOLLOWING_LIGHT_SHRINK_BOOL:
-				light.scale += Vector2(1, 1) * GROW_RATE * delta
+			if light.scale.x < player.FOLLOWING_LIGHT_MAX_SIZE and light_point_light.visible and not player.FOLLOWING_LIGHT_SHRINK_BOOL:
+				light.scale += Vector2(GROW_RATE, GROW_RATE) * delta
 			else: 
 				player.FOLLOWING_LIGHT_SHRINK_BOOL = light_point_light.visible
 			
@@ -42,14 +41,12 @@ func _on_camp_body_entered(body: Node2D) -> void:
 		player.FOLLOWING_LIGHT_SHRINK_BOOL = false
 
 func _on_camp_body_exited(body: Node2D) -> void:
-	# I was trying to make the light start smaller when leaving the cave home, but its not working for some reason.
-	# im going to bed now, this is laters problem
 	if body.name == "Player":
 		if not light or not player:
 			_get_player_and_light()
 		
 		IS_IN_CAMP = false
-		light.scale = Vector2(0.05, 0.05)
+		light.scale = Vector2(player.FOLLOWING_LIGHT_MIN_SIZE, player.FOLLOWING_LIGHT_MIN_SIZE)
 		light_point_light.visible = true
 
 func _on_nest_body_entered(body: Node2D) -> void:

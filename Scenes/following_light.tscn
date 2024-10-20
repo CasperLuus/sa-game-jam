@@ -14,6 +14,7 @@ motion_mode = 1
 script = SubResource("GDScript_ye818")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 energy = 4.12
 blend_mode = 2
 shadow_enabled = true
