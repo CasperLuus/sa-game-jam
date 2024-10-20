@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal player_signal
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -850.0
@@ -20,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.animation = "Idle"
 	else:
 		#print("Bouncing")
-		$AnimatedSprite2D.animation = "Jump"	
+		$AnimatedSprite2D.animation = "Jump"
 	
 	$AnimatedSprite2D.flip_h = velocity.x < 0
 	
@@ -42,8 +43,7 @@ func _physics_process(delta: float) -> void:
 	
 	$AnimatedSprite2D.play()
 	move_and_slide()
-	
-	
+
 # This is going to listen for when the light shrinks (or the darkness creeps) into the players allowed light boundary
 # And then do some warning animations, giving them a chance to get out, and then death
 func _on_light_area_area_entered(area: Area2D) -> void:
@@ -51,3 +51,18 @@ func _on_light_area_area_entered(area: Area2D) -> void:
 		print("hello")
 	else:
 		print(area.name, lamp.name)
+
+func _on_hazard_detection_area_entered(area: Area2D) -> void:
+	if area.name == "Spike Hazard":
+		#play shatter sound
+		#screen goes black
+		get_tree().change_scene_to_file("res://Scenes/end_screen.tscn")
+	elif area.name == "Water Hazard":
+		print("less death")
+		lamp.shrink_rate += 0.1
+
+func _on_hazard_detection_area_exited(area: Area2D) -> void:
+	if area.name == "Water Hazard":
+		print("less death")
+		lamp.shrink_rate -= 0.1
+		
