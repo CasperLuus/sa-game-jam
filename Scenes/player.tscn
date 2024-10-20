@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cenbovvwhlsh4"]
+[gd_scene load_steps=54 format=3 uid="uid://cenbovvwhlsh4"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qib5o"]
 [ext_resource type="Texture2D" uid="uid://dbdfsirnrcy1m" path="res://Assets/Crow/Idle/frame0000.png" id="2_uf2m0"]
@@ -34,6 +34,23 @@
 [ext_resource type="Texture2D" uid="uid://b3576sqnjr5vp" path="res://Assets/Crow/Jump/frame0014.png" id="32_wa3i1"]
 [ext_resource type="Texture2D" uid="uid://bbjkjsiuh41ry" path="res://Assets/Crow/Jump/frame0015.png" id="33_efdg2"]
 [ext_resource type="Texture2D" uid="uid://b7w1jpgn8ukcj" path="res://Assets/Light/Light_Transparent_2.png" id="34_1cwe2"]
+[ext_resource type="Texture2D" uid="uid://b0fcnx8x84gmr" path="res://Assets/Crow/Sleepin/frame0000.png" id="34_qmrph"]
+[ext_resource type="Texture2D" uid="uid://caelihc725kb8" path="res://Assets/Crow/Sleepin/frame0001.png" id="35_5lpjs"]
+[ext_resource type="Texture2D" uid="uid://caikb1jtvljfl" path="res://Assets/Crow/Sleepin/frame0002.png" id="36_hytth"]
+[ext_resource type="Texture2D" uid="uid://b66cnpa2klquq" path="res://Assets/Crow/Sleepin/frame0003.png" id="37_g24bn"]
+[ext_resource type="Texture2D" uid="uid://dmasixtrs2xra" path="res://Assets/Crow/Sleepin/frame0004.png" id="38_83kuu"]
+[ext_resource type="Texture2D" uid="uid://rn1f7q3dbdc6" path="res://Assets/Crow/Sleepin/frame0005.png" id="39_p3kbd"]
+[ext_resource type="Texture2D" uid="uid://c31yvjemjmf65" path="res://Assets/Crow/Sleepin/frame0006.png" id="40_2w1di"]
+[ext_resource type="Texture2D" uid="uid://k7omkx0avum" path="res://Assets/Crow/Sleepin/frame0007.png" id="41_fnxmd"]
+[ext_resource type="Texture2D" uid="uid://e85sbnuqjmeu" path="res://Assets/Crow/Sleepin/frame0008.png" id="42_elwni"]
+[ext_resource type="Texture2D" uid="uid://cjyd7g114vct7" path="res://Assets/Crow/Sleepin/frame0009.png" id="43_r5kng"]
+[ext_resource type="Texture2D" uid="uid://c1itwu7g0pnxg" path="res://Assets/Crow/Sleepin/frame0010.png" id="44_qrjqg"]
+[ext_resource type="Texture2D" uid="uid://lwbn2ewmxmgk" path="res://Assets/Crow/Sleepin/frame0011.png" id="45_8vphe"]
+[ext_resource type="Texture2D" uid="uid://r8a1k6saa1he" path="res://Assets/Crow/Sleepin/frame0012.png" id="46_jcevy"]
+[ext_resource type="Texture2D" uid="uid://dlkqbnn156bye" path="res://Assets/Crow/Sleepin/frame0013.png" id="47_khttq"]
+[ext_resource type="Texture2D" uid="uid://cssf0hx0pjm5m" path="res://Assets/Crow/Sleepin/frame0014.png" id="48_ir6oc"]
+[ext_resource type="Texture2D" uid="uid://2r45gwhpxvmi" path="res://Assets/Crow/Sleepin/frame0015.png" id="49_mro3m"]
+[ext_resource type="Texture2D" uid="uid://cswomcd78dc5x" path="res://Assets/Crow/Sleepin/frame0016.png" id="50_dwd0q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tvkxi"]
 animations = [{
@@ -168,6 +185,62 @@ animations = [{
 "loop": true,
 "name": &"Jump",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_qmrph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_5lpjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_hytth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_g24bn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_83kuu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_p3kbd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_2w1di")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_fnxmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_elwni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_r5kng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_qrjqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_8vphe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_jcevy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_khttq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_ir6oc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_mro3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_dwd0q")
+}],
+"loop": true,
+"name": &"Sleep",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oets7"]
@@ -192,7 +265,7 @@ position_smoothing_speed = 4.83
 light_mask = 2
 position = Vector2(-46, -207)
 sprite_frames = SubResource("SpriteFrames_tvkxi")
-animation = &"Floating"
+animation = &"Sleep"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-140.14, 35.75)
