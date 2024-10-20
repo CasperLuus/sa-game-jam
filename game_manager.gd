@@ -1,7 +1,7 @@
 extends Node
 
 var current_scene = null
-signal respawn
+var random = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	var root = get_tree().root
