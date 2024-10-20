@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var light_aura: PointLight2D = $"Light Aura"
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -850.0
@@ -11,7 +12,7 @@ extends CharacterBody2D
 @export var FOLLOWING_LIGHT_POS_OFFSET: Vector2
 @export var FOLLOWING_LIGHT_SHRINK_BOOL = false
 @export var FOLLOWING_LIGHT_SHRINK_MULTIPLIER = 1
-const FOLLOWING_LIGHT_SHRINK_RATE = 0.01
+const FOLLOWING_LIGHT_SHRINK_RATE = 0.001
 
 func _ready() -> void:
 	FOLLOWING_LIGHT.position = position + FOLLOWING_LIGHT_POS_OFFSET
@@ -106,5 +107,10 @@ func _handle_player_death():
 	light_aura.enabled = false
 	#wait a moment
 	await tree.create_timer(2).timeout
+	#hide the character
+	animated_sprite.visible = false
+	#music goes off
+	#wait a moment
+	await tree.create_timer(3).timeout
 	#reset scene
 	tree.reload_current_scene()
