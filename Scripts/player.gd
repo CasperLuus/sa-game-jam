@@ -2,12 +2,16 @@ extends CharacterBody2D
 
 @onready var light_aura: PointLight2D = $"Light Aura"
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@export var glass_breaking: AudioStream
+@export var walkies: AudioStream
+@onready var sfx_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -850.0
 
 var IS_SLEEPING: bool = false
 var HAS_STARTED_DAY: bool = false
+var HAS_DAY_ENDED: bool = false
 
 @export var FOLLOWING_LIGHT: CharacterBody2D
 
@@ -17,14 +21,16 @@ func _ready() -> void:
 	FOLLOWING_LIGHT.position = position + FOLLOWING_LIGHT.POS_OFFSET
 	
 func _process(delta: float) -> void:
-	if not HAS_STARTED_DAY:
+	if not HAS_DAY_ENDED and not HAS_STARTED_DAY:
 		_play_sleeping_animation()
 		if Input.is_action_just_pressed("move_up"):
 			SPEED = 300
 			HAS_STARTED_DAY = true
-	else:
+	elif not HAS_DAY_ENDED:
 		_physics_process(delta)
 		_move_following_light(delta)
+		if FOLLOWING_LIGHT.REACHED_MIN_SIZE:
+			_handle_player_death()
 		if IS_SLEEPING:
 			_handle_player_sleeping()
 
@@ -92,10 +98,12 @@ func _play_sleeping_animation():
 	$AnimatedSprite2D.play()
 
 func _handle_player_sleeping():
+	HAS_DAY_ENDED = true
 	_play_sleeping_animation()
 	GameManager._move_to_next_day()
 
 func _handle_player_death():
+	HAS_DAY_ENDED = true
 	#set speed to 0
 	SPEED = 0
 	JUMP_VELOCITY = 0
@@ -105,16 +113,17 @@ func _handle_player_death():
 	var tree = get_tree()
 	await tree.create_timer(2).timeout
 	#play shatter sound
+	glass_breaking.play()
 	#screen goes black
 	#ideally both at the same time
 	FOLLOWING_LIGHT.get_child(0).visible = false
-	light_aura.visible = false
+	light_aura.scale = Vector2(0.5, 0.5)
 	#wait a moment
 	await tree.create_timer(2).timeout
 	#hide the character
-	animated_sprite.visible = false
-	#music goes off
-	#wait a moment
-	await tree.create_timer(3).timeout
-	#reset scene
-	tree.reload_current_scene()
+	GameManager._restart_day()
+
+func _load_sfx(sfx_to_load):
+	if sfx_player.stream != sfx_to_load:
+		sfx_player.stop()
+		sfx_player.stream = sfx_to_load

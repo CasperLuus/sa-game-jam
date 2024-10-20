@@ -20,5 +20,12 @@ func _deferred_switch_scene(scene_path):
 
 func _move_to_next_day():
 	_switch_scene("res://Scenes/black_scene.tscn")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(5).timeout
+	# Display something about current day
+	_switch_scene("res://Scenes/level_1.tscn")
+
+func _restart_day():
+	_switch_scene("res://Scenes/black_scene.tscn")
+	await get_tree().create_timer(5).timeout
+	# Display same day
 	_switch_scene("res://Scenes/level_1.tscn")
