@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bfu56l34orlxh" path="res://Assets/Crow/Jump/frame0013.png" id="31_1dd0d"]
 [ext_resource type="Texture2D" uid="uid://b3576sqnjr5vp" path="res://Assets/Crow/Jump/frame0014.png" id="32_wa3i1"]
 [ext_resource type="Texture2D" uid="uid://bbjkjsiuh41ry" path="res://Assets/Crow/Jump/frame0015.png" id="33_efdg2"]
-[ext_resource type="Texture2D" uid="uid://b4el4drq04c5o" path="res://Assets/Light/Light_Transparent.png" id="38_5vxvi"]
+[ext_resource type="Texture2D" uid="uid://b7w1jpgn8ukcj" path="res://Assets/Light/Light_Transparent_2.png" id="34_1cwe2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tvkxi"]
 animations = [{
@@ -176,12 +176,15 @@ radius = 134.766
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(68, -444)
 script = ExtResource("1_qib5o")
+FOLLOWING_LIGHT_SPEED = 1450
+FOLLOWING_LIGHT_ACCELERATION = 2650
+FOLLOWING_LIGHT_POS_OFFSET = Vector2(50, -300)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-70, -319)
 rotation = 0.0349066
 ignore_rotation = false
-zoom = Vector2(0.235, 0.235)
+zoom = Vector2(0.38, 0.38)
 position_smoothing_enabled = true
 position_smoothing_speed = 4.83
 
@@ -198,12 +201,10 @@ shape = SubResource("CircleShape2D_oets7")
 [node name="Light Aura" type="PointLight2D" parent="."]
 position = Vector2(-79, -196)
 scale = Vector2(1.5536, 1.5536)
-enabled = false
-energy = 0.17
-blend_mode = 2
-texture = ExtResource("38_5vxvi")
+energy = 0.0
+texture = ExtResource("34_1cwe2")
 offset = Vector2(-12.02, 0)
-texture_scale = 1.94
+texture_scale = 1.15
 
 [node name="Hazard Detection" type="Area2D" parent="."]
 collision_layer = 4
