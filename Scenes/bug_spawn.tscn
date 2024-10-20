@@ -8,12 +8,17 @@
 size = Vector2(1071, 739)
 
 [node name="BugSpawn" type="Area2D" node_paths=PackedStringArray("bugs")]
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("1_wb1tt")
 bugs = [NodePath("Bug 1"), NodePath("Bug_2")]
+spawn_chance = 10
 
 [node name="Bug_2" parent="." instance=ExtResource("2_nuq75")]
+collision_mask = 1
 
 [node name="Bug 1" parent="." instance=ExtResource("3_ue575")]
+collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
