@@ -1,12 +1,16 @@
 extends Area2D
 
+@onready var sleep_prompt: RichTextLabel = $"Nest/Sleep Prompt"
+
 @export var PLAYER_AND_LIGHT: CharacterBody2D
 @export var GROW_RATE: float = 0.8;
+
 var PLAYER
 var LIGHT
 var PLAYER_POINT_LIGHT: PointLight2D
 var LIGHT_POINT_LIGHT: PointLight2D
 
+var SLEEP_ENABLED_BOOL = false
 
 func _on_ready() -> void:
 	PLAYER = PLAYER_AND_LIGHT.get_child(0)
@@ -15,20 +19,19 @@ func _on_ready() -> void:
 	PLAYER_POINT_LIGHT = PLAYER.get_child(3) 
 	LIGHT_POINT_LIGHT = LIGHT.get_child(0)
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
-		#PLAYER_POINT_LIGHT.visible = false
-		LIGHT_POINT_LIGHT.visible = false
-		PLAYER.FOLLOWING_LIGHT_SHRINK_BOOL = false
-		
-
 func _process(delta: float) -> void:
 	if LIGHT.scale.x < 0.8 and LIGHT_POINT_LIGHT.visible and not PLAYER.FOLLOWING_LIGHT_SHRINK_BOOL:
 		LIGHT.scale += Vector2(1, 1) * GROW_RATE * delta
 	else: 
 		PLAYER.FOLLOWING_LIGHT_SHRINK_BOOL = LIGHT_POINT_LIGHT.visible
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_camp_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		#PLAYER_POINT_LIGHT.visible = false
+		LIGHT_POINT_LIGHT.visible = false
+		PLAYER.FOLLOWING_LIGHT_SHRINK_BOOL = false
+
+func _on_camp_body_exited(body: Node2D) -> void:
 	# I was trying to make the light start smaller when leaving the cave home, but its not working for some reason.
 	# im going to bed now, this is laters problem
 	print(body.name)
@@ -38,5 +41,11 @@ func _on_body_exited(body: Node2D) -> void:
 		
 		#PLAYER_POINT_LIGHT.visible = true
 		LIGHT_POINT_LIGHT.visible = true
-			
-		
+
+func _on_nest_body_entered(body: Node2D) -> void:
+	sleep_prompt.visible = true
+	SLEEP_ENABLED_BOOL = true
+
+func _on_nest_body_exited(body: Node2D) -> void:
+	sleep_prompt.visible = false
+	SLEEP_ENABLED_BOOL = false
