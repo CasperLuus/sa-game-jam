@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://x4jqf11ca6lu"]
+[gd_scene load_steps=8 format=3 uid="uid://x4jqf11ca6lu"]
 
 [ext_resource type="PackedScene" uid="uid://ctee3m6fl62vc" path="res://Scenes/level_1.tscn" id="1_c2hb2"]
 [ext_resource type="PackedScene" uid="uid://cdp1hqbukqr7v" path="res://Scenes/player_and_light.tscn" id="2_nofvq"]
 [ext_resource type="Script" path="res://Scripts/scene_1.gd" id="3_u5k0g"]
+[ext_resource type="PackedScene" uid="uid://ck15gssj1g4nv" path="res://Scenes/bug_1.tscn" id="4_uwlp7"]
+[ext_resource type="PackedScene" uid="uid://bc14s47bdrss" path="res://Scenes/bug_2.tscn" id="5_muinc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1cw5g"]
 size = Vector2(2290, 1295)
@@ -40,6 +42,12 @@ offset_bottom = -383.0
 theme_override_font_sizes/normal_font_size = 40
 text = "Press X to Sleep"
 tab_size = 8
+
+[node name="Bug 1" parent="." instance=ExtResource("4_uwlp7")]
+position = Vector2(-16077, 2949)
+
+[node name="Bug_2" parent="." instance=ExtResource("5_muinc")]
+position = Vector2(-15708, 2944)
 
 [connection signal="body_entered" from="Camp" to="." method="_on_camp_body_entered"]
 [connection signal="body_entered" from="Camp" to="Camp" method="_on_body_entered"]
