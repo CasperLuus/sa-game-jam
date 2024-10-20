@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://ctee3m6fl62vc"]
+[gd_scene load_steps=77 format=3 uid="uid://ctee3m6fl62vc"]
 
 [ext_resource type="Texture2D" uid="uid://diy4nh0i7kcl3" path="res://Assets/Scenes/Level1BLHS.png" id="1_0jvfp"]
 [ext_resource type="PackedScene" uid="uid://63bjp6tfld8k" path="res://Scenes/water_hazard.tscn" id="2_c7vpd"]
@@ -72,6 +72,7 @@
 [ext_resource type="Texture2D" uid="uid://ddhpmutvgniji" path="res://Assets/Scenes/Foreground/AnimatedFire/2/1_60.png" id="68_b48op"]
 [ext_resource type="Texture2D" uid="uid://81rhar2k01m8" path="res://Assets/Scenes/Foreground/Nest.png" id="69_bj8b1"]
 [ext_resource type="Texture2D" uid="uid://djbve2wc1lge7" path="res://Assets/Scenes/Foreground/HoleSnoot.png" id="70_ltbtd"]
+[ext_resource type="Texture2D" uid="uid://ka6dc7hl777m" path="res://Assets/Scenes/Foreground/HoleShoot2.png" id="73_gid1i"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lj0vn"]
 
@@ -287,7 +288,7 @@ texture = ExtResource("1_0jvfp")
 
 [node name="Level1bc" type="Sprite2D" parent="."]
 material = ExtResource("3_vnad5")
-position = Vector2(8530.03, -2414)
+position = Vector2(8115, -2414)
 scale = Vector2(1.69499, 1.69352)
 texture = ExtResource("5_im7wc")
 
@@ -585,3 +586,8 @@ texture = ExtResource("70_ltbtd")
 [node name="CollisionPolygon2D42" type="CollisionPolygon2D" parent="."]
 position = Vector2(-7721.29, -229.407)
 polygon = PackedVector2Array(-61.7129, -9.59338, -52.7129, 90.4066, 271.287, 95.4066, 509.287, 128.407, 590.287, 19.4066)
+
+[node name="HoleShoot2" type="Sprite2D" parent="."]
+position = Vector2(1432, -3741)
+scale = Vector2(1.68, 1.68)
+texture = ExtResource("73_gid1i")
