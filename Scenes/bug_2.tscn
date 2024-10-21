@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bc14s47bdrss"]
+[gd_scene load_steps=14 format=3 uid="uid://bc14s47bdrss"]
 
 [ext_resource type="Texture2D" uid="uid://c150lovbl6647" path="res://Assets/Foozle_Spire_Enemy_Bug/Ground/Spritesheets/Firebug.png" id="1_8ju3c"]
 [ext_resource type="Material" uid="uid://c52ct0odjwwhw" path="res://Materials/LightOnly.tres" id="1_ax6v1"]
 [ext_resource type="Script" path="res://Scripts/bug_2.gd" id="1_djspa"]
+[ext_resource type="PackedScene" uid="uid://dhikjeodc5lrl" path="res://Scenes/pickup.tscn" id="4_buey1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8wsg"]
 atlas = ExtResource("1_8ju3c")
@@ -89,3 +90,9 @@ target_position = Vector2(-75.6667, 8.66667)
 position = Vector2(0, -3)
 scale = Vector2(3, 3)
 target_position = Vector2(88.3333, -4)
+
+[node name="Pickup" parent="." instance=ExtResource("4_buey1")]
+position = Vector2(24, -59)
+scale = Vector2(32.04, 26.7486)
+
+[connection signal="body_entered" from="Pickup" to="." method="_on_pickup_body_entered"]
