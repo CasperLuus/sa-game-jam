@@ -8,7 +8,7 @@ extends CharacterBody2D
 var REACHED_MIN_SIZE: bool = false
 
 const MIN_SIZE = 0.05
-const MAX_SIZE = 0.8
+const MAX_SIZE = 1
 const SHRINK_MULTIPLIER = 1.5
 const SHRINK_RATE = 0.001
 

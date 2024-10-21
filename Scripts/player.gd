@@ -2,8 +2,19 @@ extends CharacterBody2D
 
 @onready var light_aura: PointLight2D = $"Light Aura"
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+# sounds
 @onready var glass_breaking: AudioStreamPlayer2D = $"Audio/Glass Breaking"
 @onready var walkies: AudioStreamPlayer2D = $Audio/Walkies
+@onready var _1_strings: AudioStreamPlayer2D = $"Audio/1-Strings"
+@onready var _2_bass: AudioStreamPlayer2D = $"Audio/2-Bass"
+@onready var _3_kicks: AudioStreamPlayer2D = $"Audio/3-Kicks"
+@onready var _4_percs: AudioStreamPlayer2D = $"Audio/4-Percs"
+@onready var whispers: AudioStreamPlayer2D = $Audio/Whispers
+@onready var water_walkies: AudioStreamPlayer2D = $"Audio/Water Walkies"
+@onready var water_entry: AudioStreamPlayer2D = $"Audio/Water Entry"
+@onready var landing: AudioStreamPlayer2D = $Audio/Landing
+@onready var jump: AudioStreamPlayer2D = $Audio/Jump
+@onready var cave_ambience: AudioStreamPlayer2D = $"Audio/Cave Ambience"
 
 @export var LIGHT_SPEED = 410
 @export var LIGHT_ACCELERATION = 100
@@ -16,6 +27,8 @@ extends CharacterBody2D
 var IS_SLEEPING: bool = false
 var HAS_STARTED_DAY: bool = false
 var HAS_DAY_ENDED: bool = false
+
+var HAS_JUMPED: bool = false
 
 @export var FOLLOWING_LIGHT: CharacterBody2D
 
@@ -45,6 +58,8 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
+		walkies.stop()
+		water_walkies.stop()
 		#print("Airtime")
 		if velocity.y < 0: 
 			velocity += get_gravity() * delta * NORMAL_GRAVITY_MULTIPLIER
@@ -52,38 +67,53 @@ func _physics_process(delta: float) -> void:
 			velocity += get_gravity() * delta * _current_multiplier
 			
 		$AnimatedSprite2D.animation = "Floating"
-	elif velocity.is_zero_approx():
-		#print("Idle")
-		$AnimatedSprite2D.animation = "Idle"
 	else:
-		#print("Bouncing")
-		$AnimatedSprite2D.animation = "Jump"
-	
-	$AnimatedSprite2D.flip_h = velocity.x < 0
+		if HAS_JUMPED:
+			print("landed")
+			jump.stop()
+			walkies.stop()
+			water_walkies.stop()
+			landing.play()
+			HAS_JUMPED = false
+		if velocity.is_zero_approx():
+			print("Idle")
+			walkies.stop()
+			water_walkies.stop()
+			$AnimatedSprite2D.animation = "Idle"
+		else:
+			print("Bouncing")
+			if !walkies.playing and !FOLLOWING_LIGHT.SHOULD_USE_MULTIPLIER:
+				walkies.play()
+			elif water_walkies.playing and FOLLOWING_LIGHT.SHOULD_USE_MULTIPLIER:
+				water_walkies.play()
+			$AnimatedSprite2D.animation = "Jump"
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("move_up"):
 		if is_on_floor():
+			jump.play()
+			HAS_JUMPED = true
 			velocity.y = JUMP_VELOCITY
 		_current_multiplier = GLIDE_GRAVITY_MULTIPLIER
 	
 	if Input.is_action_just_released("move_up"):
 		_current_multiplier = NORMAL_GRAVITY_MULTIPLIER
-		
-	
-	
-	
-	
+	 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
 		#print("Moving")
-		velocity.x = direction * SPEED
+		velocity.x = direction * SPEED 
 	else:
 		#print("Decelerating")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
+	# change sprite direction
+	if direction > 0:
+		animated_sprite.flip_h = false
+	elif direction < 0:
+		animated_sprite.flip_h = true
+		
 	$AnimatedSprite2D.play()
 	move_and_slide()
 
