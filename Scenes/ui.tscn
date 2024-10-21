@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdorpxq8ftbxu"]
+[gd_scene load_steps=7 format=3 uid="uid://cdorpxq8ftbxu"]
 
 [ext_resource type="FontFile" uid="uid://dp62dqv3f07yd" path="res://Assets/Fonts/IndieFlower-Regular.ttf" id="1_8lh7t"]
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_hyk2u"]
 [ext_resource type="Texture2D" uid="uid://dejbhf8g1fcwx" path="res://Assets/Scenes/Foreground/Star/frame0000.png" id="2_c3ehl"]
 [ext_resource type="Texture2D" uid="uid://dmpssktx80cpm" path="res://Assets/UI/BugEmpty.png" id="3_xw5ei"]
 [ext_resource type="Texture2D" uid="uid://c75yseqglcjch" path="res://Assets/UI/BugFull.png" id="4_4oxoh"]
+[ext_resource type="Texture2D" uid="uid://bliq6upwg0h0l" path="res://Assets/Scenes/Foreground/Key.png" id="5_su7sj"]
 
 [node name="UI" type="CanvasLayer"]
 scale = Vector2(0.440994, 0.434839)
@@ -95,3 +96,8 @@ position = Vector2(3939.13, 90.4094)
 rotation = 0.0437409
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_c3ehl")
+
+[node name="Key" type="Sprite2D" parent="."]
+position = Vector2(4247.22, 2352.59)
+scale = Vector2(0.818591, 0.818591)
+texture = ExtResource("5_su7sj")

@@ -23,4 +23,7 @@ func _process(delta: float) -> void:
 	for i in range(food.size()):
 		food[i].visible = GameManager.food_count > i
 
+	$Key.visible = GameManager.HAS_KEY_TEMP or GameManager.HAS_KEY
+	if GameManager.HAS_KEY_TEMP:
+		$Key.modulate.a = alpha_for_temp
 		
