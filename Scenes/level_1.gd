@@ -46,8 +46,6 @@ func _on_key_pickup(body: Node2D) -> void:
 func _on_key_used(body: Node2D) -> void:
 	if (body.name == "Player") and GameManager.HAS_KEY or GameManager.HAS_KEY_TEMP:
 		$Foreground/ShortcutDoor.visible = false
-		GameManager.HAS_KEY = false
-		GameManager.HAS_KEY_TEMP = false
 		$Colliders/ShortcutDoorCollision.free()
 
 
