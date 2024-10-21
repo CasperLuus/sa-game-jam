@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://ctee3m6fl62vc"]
+[gd_scene load_steps=94 format=3 uid="uid://ctee3m6fl62vc"]
 
 [ext_resource type="Texture2D" uid="uid://diy4nh0i7kcl3" path="res://Assets/Scenes/Level1BLHS.png" id="1_0jvfp"]
 [ext_resource type="PackedScene" uid="uid://63bjp6tfld8k" path="res://Scenes/water_hazard.tscn" id="2_c7vpd"]
@@ -84,7 +84,7 @@
 [ext_resource type="Texture2D" uid="uid://vxie2ypu20wa" path="res://Assets/Scenes/Foreground/HoleShoot3.png" id="79_kvki7"]
 [ext_resource type="Texture2D" uid="uid://b8l3pkqvicjwt" path="res://Assets/Scenes/Foreground/lever.png" id="80_nglrc"]
 [ext_resource type="Texture2D" uid="uid://ca1lqisaqofm6" path="res://Assets/Scenes/Foreground/Level1BRHSTrapDoor.png" id="81_2dd60"]
-[ext_resource type="PackedScene" path="res://Scenes/ui.tscn" id="82_hyist"]
+[ext_resource type="PackedScene" uid="uid://c7qvnwhq0e4y0" path="res://Scenes/ui.tscn" id="82_hyist"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lj0vn"]
 
@@ -375,6 +375,21 @@ scale = Vector2(1.78571, 1.78571)
 
 [node name="TrapdoorClosed" type="Sprite2D" parent="Midground/TrapDoor"]
 texture = ExtResource("81_2dd60")
+
+[node name="Pickups" type="Node2D" parent="."]
+script = ExtResource("71_od375")
+
+[node name="Eye Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
+position = Vector2(-14745, -1809)
+
+[node name="Heart Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
+position = Vector2(2272, -2416)
+
+[node name="Statue Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
+position = Vector2(-10239, -5926)
+
+[node name="Trapped Door Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
+position = Vector2(21391, -3230)
 
 [node name="Colliders" type="StaticBody2D" parent="."]
 collision_layer = 17
@@ -900,19 +915,6 @@ metadata/_edit_lock_ = true
 position = Vector2(-81, -4)
 polygon = PackedVector2Array(2167, -2077, 2157, -2241, 2633, -2248, 2651, -2094, 2383, -2077, 2371, -1501, 2511, -1453, 2435, -1233, 1823, -1183, 1802, -984, 1696, -954, 1637, -905, 1584, -802, 1591, -671, 1527, -506, 1246, -467, 1097, -465, 853, -478, 756, -502, 563, -521, 553, -292, 551, -163, 540, 2324, 182, 2330, 277, -611, 304, -709, 364, -735, 662, -735, 1470, -747, 1511, -785, 1562, -926, 1524, -992, 1741, -1065, 1758, -1337, 1776, -1455, 2345, -1498, 2347, -2072)
 metadata/_edit_lock_ = true
-
-[node name="Pickups" type="Node2D" parent="."]
-script = ExtResource("71_od375")
-
-[node name="Eye Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
-position = Vector2(-14745, -1809)
-
-[node name="Heart Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
-
-[node name="Statue Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
-
-[node name="Trapped Door Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
-position = Vector2(-14745, -1809)
 
 [node name="Player And Light" type="Node2D" parent="."]
 position = Vector2(-15739, 3046)
