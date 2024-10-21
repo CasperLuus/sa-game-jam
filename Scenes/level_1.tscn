@@ -984,6 +984,7 @@ FOLLOWING_LIGHT = NodePath("../FollowingLight")
 position = Vector2(1807, -2405)
 
 [node name="Camp" type="Area2D" parent="."]
+visible = false
 position = Vector2(-11733, 20)
 script = ExtResource("74_ug4cu")
 

@@ -11,14 +11,16 @@ collision_layer = 8
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_qbnix")
+FLICKER_AMPLITUDE = 0.625
+FLICKER_SPEED = 4.0
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 4.12
+energy = 2.31
 blend_mode = 2
 shadow_enabled = true
 texture = ExtResource("1_n7rit")
 offset = Vector2(-12.02, 0)
-texture_scale = 1.94
+texture_scale = 1.55
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3.75, -88.75)
