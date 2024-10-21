@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://ctee3m6fl62vc"]
+[gd_scene load_steps=92 format=3 uid="uid://ctee3m6fl62vc"]
 
 [ext_resource type="Texture2D" uid="uid://diy4nh0i7kcl3" path="res://Assets/Scenes/Level1BLHS.png" id="1_0jvfp"]
 [ext_resource type="PackedScene" uid="uid://63bjp6tfld8k" path="res://Scenes/water_hazard.tscn" id="2_c7vpd"]
@@ -82,7 +82,7 @@
 [ext_resource type="Texture2D" uid="uid://b3n2lmjg6ig7w" path="res://Assets/Scenes/Foreground/StarExitDoor.png" id="79_dtew7"]
 [ext_resource type="Texture2D" uid="uid://b8l3pkqvicjwt" path="res://Assets/Scenes/Foreground/lever.png" id="80_nglrc"]
 [ext_resource type="Texture2D" uid="uid://ca1lqisaqofm6" path="res://Assets/Scenes/Foreground/Level1BRHSTrapDoor.png" id="81_2dd60"]
-[ext_resource type="PackedScene" uid="uid://cdorpxq8ftbxu" path="res://Scenes/ui.tscn" id="82_hyist"]
+[ext_resource type="PackedScene" path="res://Scenes/ui.tscn" id="82_hyist"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lj0vn"]
 
@@ -487,7 +487,7 @@ polygon = PackedVector2Array(416.869, 1052.14, 83.8691, 1064.14, 52.8691, 976.14
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Colliders"]
 position = Vector2(-19132.8, 245.934)
 scale = Vector2(1.69386, 1.69386)
-polygon = PackedVector2Array(559.964, -52.6112, 680.398, 244.934, 801.424, 113.282, 948.575, 41.3075, 1430.74, -134.672, 2151.59, -47.2979, 2187.61, 17.0522, 2468.5, -30.7213, 2583.74, -71.503, 2671.69, -264.553, 2922.61, -400.928, 3025.93, -435.76, 3316.96, -444.615, 3463.39, -470.001, 3717.25, -521.363, 3707.21, -602.834, 2567.8, -599.882, 2530.61, -356.06, 497.975, -276.361)
+polygon = PackedVector2Array(559.964, -52.6112, 680.398, 244.934, 801.424, 113.282, 948.575, 41.3075, 1430.74, -134.672, 2671.69, -264.553, 2922.61, -400.928, 3025.93, -435.76, 3316.96, -444.615, 3463.39, -470.001, 3717.25, -521.363, 3707.21, -602.834, 2567.8, -599.882, 2530.61, -356.06, 497.975, -276.361)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Colliders"]
 position = Vector2(-11973.3, -70.1821)
@@ -798,7 +798,6 @@ polygon = PackedVector2Array(-15141, 2055, -14189, 2073, -14225, 2199, -15087, 2
 one_way_collision = true
 
 [node name="Hazards" type="Node2D" parent="."]
-visible = false
 metadata/_edit_lock_ = true
 
 [node name="Spike Hazard" parent="Hazards" instance=ExtResource("3_cym74")]
@@ -894,8 +893,12 @@ position = Vector2(-81, -4)
 polygon = PackedVector2Array(2167, -2077, 2157, -2241, 2633, -2248, 2651, -2094, 2383, -2077, 2371, -1501, 2511, -1453, 2435, -1233, 1823, -1183, 1802, -984, 1696, -954, 1637, -905, 1584, -802, 1591, -671, 1527, -506, 1246, -467, 1097, -465, 853, -478, 756, -502, 563, -521, 553, -292, 551, -163, 540, 2324, 182, 2330, 277, -611, 304, -709, 364, -735, 662, -735, 1470, -747, 1511, -785, 1562, -926, 1524, -992, 1741, -1065, 1758, -1337, 1776, -1455, 2345, -1498, 2347, -2072)
 metadata/_edit_lock_ = true
 
+[node name="Pickups" type="Node2D" parent="."]
+
+[node name="core memories" parent="Pickups" instance=ExtResource("73_rdyjt")]
+position = Vector2(-14745, -1809)
+
 [node name="Player And Light" type="Node2D" parent="."]
-visible = false
 position = Vector2(-15777, 2737)
 
 [node name="Player" parent="Player And Light" node_paths=PackedStringArray("FOLLOWING_LIGHT") instance=ExtResource("76_86d7b")]
@@ -906,11 +909,7 @@ metadata/_edit_lock_ = true
 [node name="FollowingLight" parent="Player And Light" instance=ExtResource("77_u7fx8")]
 position = Vector2(-3768, -246)
 
-[node name="core memories" parent="Player And Light" instance=ExtResource("73_rdyjt")]
-position = Vector2(1032, -4546)
-
 [node name="Camp" type="Area2D" parent="."]
-visible = false
 position = Vector2(-11733, 20)
 script = ExtResource("74_ug4cu")
 

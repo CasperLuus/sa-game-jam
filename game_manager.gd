@@ -2,6 +2,7 @@ extends Node
 
 var current_scene = null
 var random = RandomNumberGenerator.new()
+var memory_core_count = 0
 
 func _ready() -> void:
 	var root = get_tree().root
