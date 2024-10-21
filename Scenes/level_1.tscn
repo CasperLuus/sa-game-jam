@@ -868,10 +868,12 @@ polygon = PackedVector2Array(-226.066, -109.804, 305.934, -116.804, 316.934, 196
 [node name="CollisionPolygon2D83" type="CollisionPolygon2D" parent="Colliders"]
 position = Vector2(27322.7, -3913.27)
 polygon = PackedVector2Array(-456.697, -262.73, 2171.3, 961.27, -359.697, 80.2698)
+one_way_collision = true
 
 [node name="CollisionPolygon2D84" type="CollisionPolygon2D" parent="Colliders"]
 position = Vector2(-2037.25, -7240.97)
 polygon = PackedVector2Array(-603.75, 352.969, 2030.25, -1074.03, 1742.25, -683.031)
+one_way_collision = true
 
 [node name="Hazards" type="Node2D" parent="."]
 
