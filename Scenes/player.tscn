@@ -310,19 +310,15 @@ bus = &"SFX"
 
 [node name="1-Strings" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("54_2tkc6")
-bus = &"Music"
 
 [node name="2-Bass" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("55_0yfl0")
-bus = &"Music"
 
 [node name="3-Kicks" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("56_wpf6i")
-bus = &"Music"
 
 [node name="4-Percs" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("57_pr3yl")
-bus = &"Music"
 
 [node name="Whispers" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("58_otieu")

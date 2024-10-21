@@ -6,12 +6,12 @@ var in_lever_area = false
 var total_time = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Foreground/ShortcutDoor.visible = !GameManager.USED_KEY
-	$Pickups/Key.visible = !(GameManager.HAS_KEY or GameManager.USED_KEY)
-	if GameManager.USED_KEY:
-		$Colliders/ShortcutDoorCollision.free()
+	#$Foreground/ShortcutDoor.visible = !GameManager.USED_KEY
+	$Pickups/Key.visible = !(GameManager.HAS_KEY)
+	#if GameManager.USED_KEY:
+		#$Colliders/ShortcutDoorCollision.free()
 	if GameManager.FLICKED_LEVER:
-		$Midground/TrapDoor.free()
+		$Midground/TrapDoor.visible = false
 		$Colliders/TrapDoorCollision.free()
 		$Midground/Lever/Activated.visible = true
 		$Midground/Lever/Deactivated.visible = false
@@ -30,9 +30,9 @@ func _process(delta: float) -> void:
 	
 	
 	if in_lever_area:
-		if Input.is_action_just_pressed("sleep"):
+		if Input.is_action_just_pressed("sleep") and !GameManager.FLICKED_LEVER:
 			GameManager.FLICKED_LEVER = true
-			$Midground/TrapDoor.free()
+			$Midground/TrapDoor.visible = false
 			$Colliders/TrapDoorCollision.free()
 			$Midground/Lever/Activated.visible = true
 			$Midground/Lever/Deactivated.visible = false
@@ -45,7 +45,6 @@ func _on_key_pickup(body: Node2D) -> void:
 
 func _on_key_used(body: Node2D) -> void:
 	if (body.name == "Player") and GameManager.HAS_KEY or GameManager.HAS_KEY_TEMP:
-		GameManager.USED_KEY = true
 		$Foreground/ShortcutDoor.visible = false
 		GameManager.HAS_KEY = false
 		GameManager.HAS_KEY_TEMP = false

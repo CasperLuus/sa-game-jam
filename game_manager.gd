@@ -22,7 +22,6 @@ var NAME_TRAPPED_DOOR_MEMORY = "Trapped Door Memory"
 
 var HAS_KEY: bool = false
 var HAS_KEY_TEMP: bool = false
-var USED_KEY: bool = false
 
 var FLICKED_LEVER: bool = false
 
@@ -68,7 +67,7 @@ func _move_to_next_day():
 	# Display something about current day
 	_switch_scene("res://Scenes/level_1.tscn")
 	memory_core_count += temp_memory_core_count
-	HAS_KEY = (HAS_KEY_TEMP or HAS_KEY) and !USED_KEY
+	HAS_KEY = HAS_KEY_TEMP or HAS_KEY
 	temp_memory_core_count = 0
 	prev_day_food_count = food_count
 	food_count = 0
