@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://tkwcwhitaxfw"]
+[gd_scene load_steps=19 format=3 uid="uid://c5s18mcte2ufe"]
 
 [ext_resource type="Script" path="res://Scripts/core_memories.gd" id="1_0ilnl"]
 [ext_resource type="Texture2D" uid="uid://d2w6oofuopaq3" path="res://Assets/Core Memory Sprite/Star.png" id="2_n3tb1"]

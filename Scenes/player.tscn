@@ -251,6 +251,9 @@ radius = 134.766
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(68, -444)
 script = ExtResource("1_qib5o")
+LIGHT_BOUNCE = -205
+LIGHT_DISTANCE_CUTOFF = 425
+LIGHT_POS_OFFSET = Vector2(299.205, -254.22)
 glass_breaking = ExtResource("52_8tdqs")
 walkies = ExtResource("53_w7aml")
 

@@ -1,10 +1,6 @@
 extends CharacterBody2D
 
-const JUMP_VELOCITY = -400.0
 
-@export var SPEED = 410
-@export var ACCELERATION = 100
-@export var POS_OFFSET: Vector2
 @export var IS_SHRINKING = false
 @export var SHOULD_USE_MULTIPLIER = false
 

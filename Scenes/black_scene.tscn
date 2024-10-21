@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://scmv63y02x0x"]
+[gd_scene format=3 uid="uid://dvi5cx4asetgm"]
 
 [node name="Black Scene" type="CanvasModulate"]
 modulate = Color(0, 0, 0, 1)
