@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://ctee3m6fl62vc"]
+[gd_scene load_steps=79 format=3 uid="uid://ctee3m6fl62vc"]
 
 [ext_resource type="Texture2D" uid="uid://diy4nh0i7kcl3" path="res://Assets/Scenes/Level1BLHS.png" id="1_0jvfp"]
 [ext_resource type="PackedScene" uid="uid://63bjp6tfld8k" path="res://Scenes/water_hazard.tscn" id="2_c7vpd"]
@@ -73,6 +73,8 @@
 [ext_resource type="PackedScene" uid="uid://cxhats6ntngh" path="res://Scenes/camp.tscn" id="69_j8427"]
 [ext_resource type="Texture2D" uid="uid://djbve2wc1lge7" path="res://Assets/Scenes/Foreground/HoleSnoot.png" id="70_ltbtd"]
 [ext_resource type="Texture2D" uid="uid://ka6dc7hl777m" path="res://Assets/Scenes/Foreground/HoleShoot2.png" id="73_gid1i"]
+[ext_resource type="PackedScene" uid="uid://c3hepf2iddjwy" path="res://Scenes/bugspawnborders.tscn" id="74_5m3su"]
+[ext_resource type="PackedScene" uid="uid://b4x2pfjequu46" path="res://Scenes/bug_spawn.tscn" id="75_qvsxu"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lj0vn"]
 
@@ -711,3 +713,17 @@ texture = ExtResource("70_ltbtd")
 position = Vector2(1432, -3741)
 scale = Vector2(1.68, 1.68)
 texture = ExtResource("73_gid1i")
+
+[node name="bugspawnborders5" parent="." instance=ExtResource("74_5m3su")]
+position = Vector2(-15163, 2828)
+collision_layer = 1
+collision_mask = 16
+
+[node name="bugspawnborders6" parent="." instance=ExtResource("74_5m3su")]
+position = Vector2(-16313, 2828)
+collision_layer = 1
+collision_mask = 16
+
+[node name="BugSpawn2" parent="." instance=ExtResource("75_qvsxu")]
+position = Vector2(-15600, 2816)
+collision_mask = 1
