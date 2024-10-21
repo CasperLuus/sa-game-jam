@@ -2,9 +2,8 @@ extends CharacterBody2D
 
 @onready var light_aura: PointLight2D = $"Light Aura"
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@export var glass_breaking: AudioStream
-@export var walkies: AudioStream
-@onready var sfx_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var glass_breaking: AudioStreamPlayer2D = $"Audio/Glass Breaking"
+@onready var walkies: AudioStreamPlayer2D = $Audio/Walkies
 
 @export var LIGHT_SPEED = 410
 @export var LIGHT_ACCELERATION = 100
@@ -129,8 +128,3 @@ func _handle_player_death():
 	await tree.create_timer(2).timeout
 	#hide the character
 	GameManager._restart_day()
-
-func _load_sfx(sfx_to_load):
-	if sfx_player.stream != sfx_to_load:
-		sfx_player.stop()
-		sfx_player.stream = sfx_to_load

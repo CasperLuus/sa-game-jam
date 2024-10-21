@@ -252,8 +252,6 @@ radius = 134.766
 position = Vector2(68, -444)
 script = ExtResource("1_qib5o")
 LIGHT_POS_OFFSET = Vector2(299.205, -254.22)
-glass_breaking = ExtResource("52_8tdqs")
-walkies = ExtResource("53_w7aml")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-70, -319)
@@ -289,7 +287,13 @@ collision_mask = 4
 position = Vector2(-140.14, 35.75)
 shape = SubResource("CircleShape2D_oets7")
 
-[node name="sfx_player" type="AudioStreamPlayer2D" parent="."]
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Glass Breaking" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("52_8tdqs")
+
+[node name="Walkies" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("53_w7aml")
 
 [connection signal="area_entered" from="Hazard Detection" to="." method="_on_hazard_detection_area_entered"]
 [connection signal="area_exited" from="Hazard Detection" to="." method="_on_hazard_detection_area_exited"]
