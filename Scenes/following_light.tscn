@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl2juli3o1glw"]
+[gd_scene load_steps=4 format=3 uid="uid://cl2juli3o1glw"]
 
 [ext_resource type="Texture2D" uid="uid://c4eseubv6xpm1" path="res://Assets/Light/Light_Transparent_3.png" id="1_n7rit"]
 [ext_resource type="Script" path="res://Scripts/following_light.gd" id="1_qbnix"]
+[ext_resource type="Texture2D" uid="uid://dfcsthdtnupat" path="res://Assets/Light/PointLight.png" id="3_u23sy"]
 
 [node name="FollowingLight" type="CharacterBody2D"]
 position = Vector2(38, -251)
@@ -18,3 +19,8 @@ shadow_enabled = true
 texture = ExtResource("1_n7rit")
 offset = Vector2(-12.02, 0)
 texture_scale = 1.94
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.75, -88.75)
+texture = ExtResource("3_u23sy")
+offset = Vector2(-12.02, 0)
