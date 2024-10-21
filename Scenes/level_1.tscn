@@ -409,7 +409,7 @@ scale = Vector2(2.01746, 2.01746)
 texture = ExtResource("72_37yal")
 
 [node name="KeyPickup" parent="Pickups/Key" instance=ExtResource("83_dgyop")]
-position = Vector2(-27.2619, 203.722)
+position = Vector2(-0.495573, 98.1432)
 scale = Vector2(7.23684, 21.9286)
 
 [node name="Eye Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
