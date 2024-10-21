@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bc14s47bdrss"]
+[gd_scene load_steps=13 format=3 uid="uid://bc14s47bdrss"]
 
 [ext_resource type="Texture2D" uid="uid://c150lovbl6647" path="res://Assets/Foozle_Spire_Enemy_Bug/Ground/Spritesheets/Firebug.png" id="1_8ju3c"]
+[ext_resource type="Material" uid="uid://c52ct0odjwwhw" path="res://Materials/LightOnly.tres" id="1_ax6v1"]
 [ext_resource type="Script" path="res://Scripts/bug_2.gd" id="1_djspa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8wsg"]
@@ -71,6 +72,7 @@ animations = [{
 script = ExtResource("1_djspa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("1_ax6v1")
 position = Vector2(8.00001, -3)
 scale = Vector2(8.998, 6.875)
 sprite_frames = SubResource("SpriteFrames_0samq")

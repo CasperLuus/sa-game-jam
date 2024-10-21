@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://ck15gssj1g4nv"]
+[gd_scene load_steps=13 format=3 uid="uid://ck15gssj1g4nv"]
 
 [ext_resource type="Script" path="res://Scripts/bug_1.gd" id="1_iy5ki"]
+[ext_resource type="Material" uid="uid://c52ct0odjwwhw" path="res://Materials/LightOnly.tres" id="1_yke32"]
 [ext_resource type="Texture2D" uid="uid://cpc13wvft0ao" path="res://Assets/Foozle_Spire_Enemy_Bug/Ground/Spritesheets/Leafbug.png" id="1_yl168"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u65pt"]
@@ -71,6 +72,7 @@ animations = [{
 script = ExtResource("1_iy5ki")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("1_yke32")
 position = Vector2(-14, 5)
 scale = Vector2(9.40625, 6.875)
 sprite_frames = SubResource("SpriteFrames_ig4h5")
