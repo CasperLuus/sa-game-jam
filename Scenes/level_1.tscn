@@ -1096,6 +1096,8 @@ sdf_collision = false
 position = Vector2(720, -7979)
 occluder = SubResource("OccluderPolygon2D_4qu4e")
 
+[node name="UI" parent="." instance=ExtResource("82_hyist")]
+
 [connection signal="body_entered" from="Camp" to="Camp" method="_on_body_entered"]
 [connection signal="body_exited" from="Camp" to="Camp" method="_on_body_exited"]
 [connection signal="body_entered" from="Camp/Nest" to="Camp/Nest" method="_on_body_entered"]
