@@ -81,6 +81,17 @@ scale = Vector2(8.998, 6.875)
 sprite_frames = SubResource("SpriteFrames_0samq")
 autoplay = "default"
 
+[node name="RayCastCliffRight" type="RayCast2D" parent="."]
+position = Vector2(-340, -20)
+scale = Vector2(9, 9)
+target_position = Vector2(0.555557, 38.1111)
+
+[node name="RayCastCliffLeft" type="RayCast2D" parent="."]
+position = Vector2(386, -29)
+rotation = 0.00340776
+scale = Vector2(9, 9)
+target_position = Vector2(-0.888889, 37.8889)
+
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, 3)
 scale = Vector2(3, 3)
@@ -96,3 +107,4 @@ position = Vector2(24, -59)
 scale = Vector2(32.04, 26.7486)
 
 [connection signal="body_entered" from="Pickup" to="." method="_on_pickup_body_entered"]
+[connection signal="body_exited" from="Pickup" to="." method="_on_pickup_body_exited"]

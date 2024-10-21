@@ -55,7 +55,7 @@ func _on_key_used(body: Node2D) -> void:
 func _on_exit_approach(body: Node2D) -> void:
 	if (body.name == "Player") and GameManager.memory_core_count + GameManager.temp_memory_core_count >= 4:
 		$Foreground/ExitDoor.free()
-
+		$Colliders/ExitDoorCollision.free()
 
 func _on_lever_pulled(body: Node2D) -> void:
 	if (body.name == "Player"):

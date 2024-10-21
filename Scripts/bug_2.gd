@@ -16,6 +16,14 @@ func _process(delta):
 	if ray_cast_left.is_colliding():
 			direction = 1
 			animated_sprite.flip_h = false
+	
+	if !$RayCastCliffLeft.is_colliding():
+		direction = -1
+		animated_sprite.flip_h = true
+	if !$RayCastCliffRight.is_colliding():
+		direction = 1
+		animated_sprite.flip_h = false			
+
 	position.x += direction * SPEED * delta
 	
 	if can_eat and Input.is_action_just_pressed("sleep") and GameManager.food_count < 3:
