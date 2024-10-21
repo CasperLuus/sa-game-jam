@@ -1,10 +1,5 @@
-[gd_scene load_steps=2 format=3 uid="uid://eillgvrrum7p"]
-
-[ext_resource type="Script" path="res://Scripts/spike_hazard.gd" id="1_1grdn"]
+[gd_scene format=3 uid="uid://eillgvrrum7p"]
 
 [node name="Spike Hazard" type="Area2D"]
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("1_1grdn")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

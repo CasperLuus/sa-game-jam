@@ -1,10 +1,5 @@
-[gd_scene load_steps=2 format=3 uid="uid://63bjp6tfld8k"]
-
-[ext_resource type="Script" path="res://Scripts/water_hazard.gd" id="1_0p7iv"]
+[gd_scene format=3 uid="uid://63bjp6tfld8k"]
 
 [node name="Water Hazard" type="Area2D"]
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("1_0p7iv")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

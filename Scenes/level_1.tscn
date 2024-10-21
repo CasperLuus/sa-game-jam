@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://ctee3m6fl62vc"]
+[gd_scene load_steps=91 format=3 uid="uid://ctee3m6fl62vc"]
 
 [ext_resource type="Texture2D" uid="uid://diy4nh0i7kcl3" path="res://Assets/Scenes/Level1BLHS.png" id="1_0jvfp"]
 [ext_resource type="PackedScene" uid="uid://63bjp6tfld8k" path="res://Scenes/water_hazard.tscn" id="2_c7vpd"]
@@ -72,6 +72,7 @@
 [ext_resource type="Texture2D" uid="uid://81rhar2k01m8" path="res://Assets/Scenes/Foreground/Nest.png" id="69_bj8b1"]
 [ext_resource type="Texture2D" uid="uid://djbve2wc1lge7" path="res://Assets/Scenes/Foreground/HoleSnoot.png" id="70_ltbtd"]
 [ext_resource type="Texture2D" uid="uid://ka6dc7hl777m" path="res://Assets/Scenes/Foreground/HoleShoot2.png" id="73_gid1i"]
+[ext_resource type="PackedScene" uid="uid://c5s18mcte2ufe" path="res://Scenes/core_memories.tscn" id="73_rdyjt"]
 [ext_resource type="Script" path="res://Scripts/camp.gd" id="74_ug4cu"]
 [ext_resource type="Script" path="res://Scripts/nest.gd" id="75_7kr38"]
 [ext_resource type="PackedScene" uid="uid://cenbovvwhlsh4" path="res://Scenes/player.tscn" id="76_86d7b"]
@@ -81,6 +82,7 @@
 [ext_resource type="Texture2D" uid="uid://b3n2lmjg6ig7w" path="res://Assets/Scenes/Foreground/StarExitDoor.png" id="79_dtew7"]
 [ext_resource type="Texture2D" uid="uid://b8l3pkqvicjwt" path="res://Assets/Scenes/Foreground/lever.png" id="80_nglrc"]
 [ext_resource type="Texture2D" uid="uid://ca1lqisaqofm6" path="res://Assets/Scenes/Foreground/Level1BRHSTrapDoor.png" id="81_2dd60"]
+[ext_resource type="PackedScene" uid="uid://cdorpxq8ftbxu" path="res://Scenes/ui.tscn" id="82_hyist"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lj0vn"]
 
@@ -785,13 +787,22 @@ position = Vector2(11522.9, -11751.1)
 polygon = PackedVector2Array(-435.9, 75.0996, -413.9, 140.1, 517.1, 135.1, 528.1, 70.0996)
 one_way_collision = true
 
+[node name="CollisionPolygon2D83" type="CollisionPolygon2D" parent="Colliders"]
+position = Vector2(-475, 203)
+polygon = PackedVector2Array(-15141, 2055, -14189, 2073, -14225, 2199, -15087, 2235)
+one_way_collision = true
+
+[node name="CollisionPolygon2D84" type="CollisionPolygon2D" parent="Colliders"]
+position = Vector2(-1177, -983)
+polygon = PackedVector2Array(-15141, 2055, -14189, 2073, -14225, 2199, -15087, 2235)
+one_way_collision = true
+
 [node name="Hazards" type="Node2D" parent="."]
 visible = false
 metadata/_edit_lock_ = true
 
 [node name="Spike Hazard" parent="Hazards" instance=ExtResource("3_cym74")]
 position = Vector2(-10004.3, 801.818)
-script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Spike Hazard"]
@@ -801,7 +812,6 @@ metadata/_edit_lock_ = true
 
 [node name="Spike Hazard5" parent="Hazards" instance=ExtResource("3_cym74")]
 position = Vector2(-10004.3, 801.818)
-script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Spike Hazard5"]
@@ -811,7 +821,6 @@ metadata/_edit_lock_ = true
 
 [node name="Spike Hazard6" parent="Hazards" instance=ExtResource("3_cym74")]
 position = Vector2(-10004.3, 801.818)
-script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Spike Hazard6"]
@@ -821,7 +830,6 @@ metadata/_edit_lock_ = true
 
 [node name="Spike Hazard7" parent="Hazards" instance=ExtResource("3_cym74")]
 position = Vector2(-10004.3, 801.818)
-script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Spike Hazard7"]
@@ -831,7 +839,6 @@ metadata/_edit_lock_ = true
 
 [node name="Spike Hazard8" parent="Hazards" instance=ExtResource("3_cym74")]
 position = Vector2(-10004.3, 801.818)
-script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Spike Hazard8"]
@@ -841,7 +848,6 @@ metadata/_edit_lock_ = true
 
 [node name="Spike Hazard9" parent="Hazards" instance=ExtResource("3_cym74")]
 position = Vector2(-10004.3, 801.818)
-script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Spike Hazard9"]
@@ -851,7 +857,6 @@ metadata/_edit_lock_ = true
 
 [node name="Water Hazard" parent="Hazards" instance=ExtResource("2_c7vpd")]
 position = Vector2(-5474.27, 2588.82)
-script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Water Hazard"]
@@ -859,7 +864,6 @@ polygon = PackedVector2Array(-1228.73, 36.1799, -1451.73, -56.8201, -1564.73, -8
 metadata/_edit_lock_ = true
 
 [node name="Spike Hazard2" parent="Hazards" instance=ExtResource("3_cym74")]
-script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Spike Hazard2"]
@@ -867,7 +871,6 @@ polygon = PackedVector2Array(1843, 2439, 2049, 2218, 2074, 2201, 2125, 2241, 220
 metadata/_edit_lock_ = true
 
 [node name="Spike Hazard3" parent="Hazards" instance=ExtResource("3_cym74")]
-script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Spike Hazard3"]
@@ -876,7 +879,6 @@ polygon = PackedVector2Array(3005, 2301, 3139, 1968, 3491, 1964, 3777, 2041, 414
 metadata/_edit_lock_ = true
 
 [node name="Spike Hazard4" parent="Hazards" instance=ExtResource("3_cym74")]
-script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Spike Hazard4"]
@@ -885,7 +887,6 @@ polygon = PackedVector2Array(4831, 1907, 5117, 2041, 5539, 2076, 5702, 2009, 586
 metadata/_edit_lock_ = true
 
 [node name="Water Hazard2" parent="Hazards" instance=ExtResource("2_c7vpd")]
-script = null
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazards/Water Hazard2"]
@@ -898,11 +899,15 @@ visible = false
 position = Vector2(-15777, 2737)
 
 [node name="Player" parent="Player And Light" node_paths=PackedStringArray("FOLLOWING_LIGHT") instance=ExtResource("76_86d7b")]
-position = Vector2(-3057, -315)
+position = Vector2(-3005, -477)
 FOLLOWING_LIGHT = NodePath("../FollowingLight")
+metadata/_edit_lock_ = true
 
 [node name="FollowingLight" parent="Player And Light" instance=ExtResource("77_u7fx8")]
-position = Vector2(1807, -2405)
+position = Vector2(-3768, -246)
+
+[node name="core memories" parent="Player And Light" instance=ExtResource("73_rdyjt")]
+position = Vector2(1032, -4546)
 
 [node name="Camp" type="Area2D" parent="."]
 visible = false
@@ -1016,6 +1021,8 @@ sdf_collision = false
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Occluders"]
 position = Vector2(720, -7979)
 occluder = SubResource("OccluderPolygon2D_4qu4e")
+
+[node name="UI" parent="." instance=ExtResource("82_hyist")]
 
 [connection signal="body_entered" from="Camp" to="Camp" method="_on_body_entered"]
 [connection signal="body_exited" from="Camp" to="Camp" method="_on_body_exited"]
