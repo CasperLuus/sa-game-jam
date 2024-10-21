@@ -16,7 +16,7 @@ script = ExtResource("3_u5k0g")
 [node name="Level 1" parent="." instance=ExtResource("1_c2hb2")]
 
 [node name="Player And Light" parent="." instance=ExtResource("2_nofvq")]
-position = Vector2(-18760, 2963)
+position = Vector2(-18819, 2807)
 
 [node name="Camp" type="Area2D" parent="."]
 position = Vector2(-19162, 3005)
@@ -33,12 +33,13 @@ position = Vector2(-241, -103)
 shape = SubResource("RectangleShape2D_3snls")
 
 [node name="Sleep Prompt" type="RichTextLabel" parent="Nest"]
-visible = false
-offset_left = -401.0
-offset_top = -86.0
-offset_right = -231.0
-offset_bottom = -46.0
+offset_left = -170.0
+offset_top = -448.0
+offset_right = 158.0
+offset_bottom = -383.0
+theme_override_font_sizes/normal_font_size = 40
 text = "Press X to Sleep"
+tab_size = 8
 
 [connection signal="body_entered" from="Camp" to="." method="_on_camp_body_entered"]
 [connection signal="body_entered" from="Camp" to="Camp" method="_on_body_entered"]
