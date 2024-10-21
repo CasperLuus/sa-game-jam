@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cenbovvwhlsh4"]
+[gd_scene load_steps=56 format=3 uid="uid://cenbovvwhlsh4"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qib5o"]
 [ext_resource type="Texture2D" uid="uid://dbdfsirnrcy1m" path="res://Assets/Crow/Idle/frame0000.png" id="2_uf2m0"]
@@ -51,6 +51,8 @@
 [ext_resource type="Texture2D" uid="uid://cssf0hx0pjm5m" path="res://Assets/Crow/Sleepin/frame0014.png" id="48_ir6oc"]
 [ext_resource type="Texture2D" uid="uid://2r45gwhpxvmi" path="res://Assets/Crow/Sleepin/frame0015.png" id="49_mro3m"]
 [ext_resource type="Texture2D" uid="uid://cswomcd78dc5x" path="res://Assets/Crow/Sleepin/frame0016.png" id="50_dwd0q"]
+[ext_resource type="AudioStream" uid="uid://b7r5cnf3jycmt" path="res://Assets/Music/glass-breaking.wav" id="52_8tdqs"]
+[ext_resource type="AudioStream" uid="uid://ddm36bol4kfgt" path="res://Assets/Music/walkies-loop.wav" id="53_w7aml"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tvkxi"]
 animations = [{
@@ -263,7 +265,7 @@ position_smoothing_speed = 4.83
 light_mask = 2
 position = Vector2(-46, -207)
 sprite_frames = SubResource("SpriteFrames_tvkxi")
-animation = &"Sleep"
+animation = &"Floating"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-140.14, 35.75)
@@ -284,6 +286,14 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazard Detection"]
 position = Vector2(-140.14, 35.75)
 shape = SubResource("CircleShape2D_oets7")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Glass Breaking" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("52_8tdqs")
+
+[node name="Walkies" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("53_w7aml")
 
 [connection signal="area_entered" from="Hazard Detection" to="." method="_on_hazard_detection_area_entered"]
 [connection signal="area_exited" from="Hazard Detection" to="." method="_on_hazard_detection_area_exited"]

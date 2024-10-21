@@ -11,7 +11,7 @@ var REACHED_MIN_SIZE: bool = false
 const MIN_SIZE = 0.05
 const MAX_SIZE = 0.8
 const SHRINK_MULTIPLIER = 1.5
-const SHRINK_RATE = 0.001
+const SHRINK_RATE = 0.1
 
 @onready var FLICKER_OFFSET = $PointLight2D.energy
 
