@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://byy1faxcc3jjv"]
+[gd_scene load_steps=4 format=3 uid="uid://byy1faxcc3jjv"]
 
 [ext_resource type="Script" path="res://Scripts/menu.gd" id="1_23fhi"]
+[ext_resource type="Texture2D" uid="uid://c3k5j6g3a4e1e" path="res://Assets/Scenes/Splash.png" id="2_7kp2u"]
+[ext_resource type="FontFile" uid="uid://dp62dqv3f07yd" path="res://Assets/Fonts/IndieFlower-Regular.ttf" id="2_qhkkd"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -9,36 +11,62 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.01679, 1.00982)
 script = ExtResource("1_23fhi")
 
+[node name="Loading" type="RichTextLabel" parent="."]
+z_index = 8
+layout_mode = 2
+offset_left = 1367.05
+offset_top = 900.16
+offset_right = 1842.05
+offset_bottom = 1034.16
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("2_qhkkd")
+theme_override_font_sizes/normal_font_size = 91
+text = "LOADING ..."
+fit_content = true
+
+[node name="Splash" type="Sprite2D" parent="."]
+position = Vector2(916.606, 498.108)
+scale = Vector2(0.763964, 0.763964)
+texture = ExtResource("2_7kp2u")
+
 [node name="Buttons" type="VBoxContainer" parent="."]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -46.5
-offset_top = -68.0
-offset_right = 46.5
-offset_bottom = 68.0
+offset_left = -248.942
+offset_top = 360.16
+offset_right = 227.019
+offset_bottom = 535.16
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.782217, 0.782217)
 
 [node name="Continue" type="Button" parent="Buttons"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Exit")
-text = "Continue"
+theme_override_fonts/font = ExtResource("2_qhkkd")
+theme_override_font_sizes/font_size = 114
+text = "START"
 
 [node name="New Game" type="Button" parent="Buttons"]
+visible = false
 layout_mode = 2
 text = "New Game"
 
 [node name="Options" type="Button" parent="Buttons"]
+visible = false
 layout_mode = 2
 text = "Options"
 
 [node name="Exit" type="Button" parent="Buttons"]
+visible = false
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Continue")
 text = "Exit"
