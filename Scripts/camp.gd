@@ -6,37 +6,31 @@ extends Area2D
 var SHRINK_RATE: float = 0.8;
 var GROW_RATE: float = 0.4
 var IS_IN_CAMP = false
+var HAS_LEFT_CAMP = false
 
 func _process(delta: float) -> void:
 	if light and player:
-		print("process")
-		print(light)
-		print(player)
-		var light_point_light = light.get_child(0)
 		
 		if IS_IN_CAMP:
-			if light.scale.x > player.FOLLOWING_LIGHT_MIN_SIZE:
+			if light.scale.x > light.MIN_SIZE:
 				light.scale -= Vector2(SHRINK_RATE, SHRINK_RATE) * delta
 			else:
-				light_point_light.visible = false
+				light.visible = false
 		else:
-			if light.scale.x < player.FOLLOWING_LIGHT_MAX_SIZE and light_point_light.visible and not player.FOLLOWING_LIGHT_SHRINK_BOOL:
+			if light.scale.x < light.MAX_SIZE and light.visible and not light.IS_SHRINKING:
 				light.scale += Vector2(GROW_RATE, GROW_RATE) * delta
 			else: 
-				player.FOLLOWING_LIGHT_SHRINK_BOOL = light_point_light.visible
+				light.IS_SHRINKING = light.visible
 			
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		print("hello")
 		IS_IN_CAMP = true
-		body.FOLLOWING_LIGHT_SHRINK_BOOL = false
+		light.IS_SHRINKING = false
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
-		print("goodbye")
-		var light_point_light = light.get_child(0)
-		
+		HAS_LEFT_CAMP = true
 		IS_IN_CAMP = false
-		light.scale = Vector2(player.FOLLOWING_LIGHT_MIN_SIZE, player.FOLLOWING_LIGHT_MIN_SIZE)
-		light_point_light.visible = true
+		light.scale = Vector2(light.MIN_SIZE, light.MIN_SIZE)
+		light.visible = true

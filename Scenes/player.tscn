@@ -249,9 +249,6 @@ radius = 134.766
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(68, -444)
 script = ExtResource("1_qib5o")
-FOLLOWING_LIGHT_SPEED = 1450
-FOLLOWING_LIGHT_ACCELERATION = 2650
-FOLLOWING_LIGHT_POS_OFFSET = Vector2(50, -300)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-70, -319)

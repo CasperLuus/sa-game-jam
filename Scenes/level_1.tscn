@@ -330,6 +330,7 @@ position = Vector2(-18189.3, 2633.82)
 rotation = 1.56227
 scale = Vector2(9.77605, 9.77605)
 sprite_frames = SubResource("SpriteFrames_yqja3")
+autoplay = "default"
 frame_progress = 0.0771794
 metadata/_edit_lock_ = true
 
@@ -351,7 +352,6 @@ texture = ExtResource("69_bj8b1")
 metadata/_edit_lock_ = true
 
 [node name="Colliders" type="StaticBody2D" parent="."]
-visible = false
 collision_layer = 17
 collision_mask = 17
 metadata/_edit_lock_ = true
@@ -750,7 +750,6 @@ one_way_collision = true
 metadata/_edit_lock_ = true
 
 [node name="Hazards" type="Node2D" parent="."]
-visible = false
 metadata/_edit_lock_ = true
 
 [node name="Spike Hazard" parent="Hazards" instance=ExtResource("3_cym74")]
@@ -808,13 +807,14 @@ polygon = PackedVector2Array(2167, -2077, 2157, -2241, 2633, -2248, 2651, -2094,
 metadata/_edit_lock_ = true
 
 [node name="Player And Light" type="Node2D" parent="."]
-
-[node name="FollowingLight" parent="Player And Light" instance=ExtResource("77_u7fx8")]
-position = Vector2(-16035, 2156)
+position = Vector2(-15777, 2737)
 
 [node name="Player" parent="Player And Light" node_paths=PackedStringArray("FOLLOWING_LIGHT") instance=ExtResource("76_86d7b")]
-position = Vector2(-18823, 2464)
+position = Vector2(-3057, -315)
 FOLLOWING_LIGHT = NodePath("../FollowingLight")
+
+[node name="FollowingLight" parent="Player And Light" instance=ExtResource("77_u7fx8")]
+position = Vector2(1807, -2405)
 
 [node name="Camp" type="Area2D" parent="."]
 position = Vector2(-11733, 20)
@@ -833,14 +833,13 @@ position = Vector2(-7728, 2726)
 shape = SubResource("RectangleShape2D_8wtwq")
 
 [node name="Sleep Prompt" type="RichTextLabel" parent="Camp/Nest"]
-offset_left = -7652.0
-offset_top = 2546.0
-offset_right = -7324.0
-offset_bottom = 2611.0
-theme_override_font_sizes/normal_font_size = 40
+offset_left = -7733.0
+offset_top = 2513.0
+offset_right = -7248.0
+offset_bottom = 2614.0
+theme_override_font_sizes/normal_font_size = 60
 text = "Press X to Sleep"
 tab_size = 8
-metadata/_edit_use_anchors_ = true
 
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 100

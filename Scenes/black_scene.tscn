@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://scmv63y02x0x"]
+
+[node name="Black Scene" type="CanvasModulate"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+top_level = true
+color = Color(0, 0, 0, 1)
