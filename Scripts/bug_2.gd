@@ -12,8 +12,10 @@ var can_eat = false;
 
 func _ready() -> void:
 	var num = GameManager.random.randi_range(1,100)
-	$AnimatedSprite2D2.visible = num % 2 == 0
-	$AnimatedSprite2D.visible = num % 2 != 0
+	if num % 2 == 0:
+		$AnimatedSprite2D2.free()
+	else: 
+		$AnimatedSprite2D.free()
 
 func _process(delta):
 	if !$RayCastCliffLeft.is_colliding():
