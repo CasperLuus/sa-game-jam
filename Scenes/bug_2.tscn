@@ -68,7 +68,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Bug_2" type="Node2D"]
+[node name="Bug_2" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("1_djspa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

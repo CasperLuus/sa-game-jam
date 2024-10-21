@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3hepf2iddjwy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esagg"]
+size = Vector2(2, 5)
+
+[node name="bugspawnborders" type="Area2D"]
+
+[node name="StaticBody2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_esagg")
