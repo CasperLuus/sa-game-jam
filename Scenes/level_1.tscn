@@ -71,6 +71,7 @@
 [ext_resource type="Texture2D" uid="uid://ddhpmutvgniji" path="res://Assets/Scenes/Foreground/AnimatedFire/2/1_60.png" id="68_b48op"]
 [ext_resource type="Texture2D" uid="uid://81rhar2k01m8" path="res://Assets/Scenes/Foreground/Nest.png" id="69_bj8b1"]
 [ext_resource type="Texture2D" uid="uid://djbve2wc1lge7" path="res://Assets/Scenes/Foreground/HoleSnoot.png" id="70_ltbtd"]
+[ext_resource type="Script" path="res://Scripts/pickup.gd" id="71_od375"]
 [ext_resource type="Texture2D" uid="uid://ka6dc7hl777m" path="res://Assets/Scenes/Foreground/HoleShoot2.png" id="73_gid1i"]
 [ext_resource type="PackedScene" uid="uid://c5s18mcte2ufe" path="res://Scenes/core_memories.tscn" id="73_rdyjt"]
 [ext_resource type="Script" path="res://Scripts/camp.gd" id="74_ug4cu"]
@@ -83,7 +84,7 @@
 [ext_resource type="Texture2D" uid="uid://vxie2ypu20wa" path="res://Assets/Scenes/Foreground/HoleShoot3.png" id="79_kvki7"]
 [ext_resource type="Texture2D" uid="uid://b8l3pkqvicjwt" path="res://Assets/Scenes/Foreground/lever.png" id="80_nglrc"]
 [ext_resource type="Texture2D" uid="uid://ca1lqisaqofm6" path="res://Assets/Scenes/Foreground/Level1BRHSTrapDoor.png" id="81_2dd60"]
-[ext_resource type="PackedScene" uid="uid://cdorpxq8ftbxu" path="res://Scenes/ui.tscn" id="82_hyist"]
+[ext_resource type="PackedScene" path="res://Scenes/ui.tscn" id="82_hyist"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lj0vn"]
 
@@ -900,6 +901,19 @@ position = Vector2(-81, -4)
 polygon = PackedVector2Array(2167, -2077, 2157, -2241, 2633, -2248, 2651, -2094, 2383, -2077, 2371, -1501, 2511, -1453, 2435, -1233, 1823, -1183, 1802, -984, 1696, -954, 1637, -905, 1584, -802, 1591, -671, 1527, -506, 1246, -467, 1097, -465, 853, -478, 756, -502, 563, -521, 553, -292, 551, -163, 540, 2324, 182, 2330, 277, -611, 304, -709, 364, -735, 662, -735, 1470, -747, 1511, -785, 1562, -926, 1524, -992, 1741, -1065, 1758, -1337, 1776, -1455, 2345, -1498, 2347, -2072)
 metadata/_edit_lock_ = true
 
+[node name="Pickups" type="Node2D" parent="."]
+script = ExtResource("71_od375")
+
+[node name="Eye Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
+position = Vector2(-14745, -1809)
+
+[node name="Heart Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
+
+[node name="Statue Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
+
+[node name="Trapped Door Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
+position = Vector2(-14745, -1809)
+
 [node name="Player And Light" type="Node2D" parent="."]
 position = Vector2(-15739, 3046)
 
@@ -911,9 +925,6 @@ metadata/_edit_lock_ = true
 
 [node name="FollowingLight" parent="Player And Light" instance=ExtResource("77_u7fx8")]
 position = Vector2(-3564, -261)
-
-[node name="core memories" parent="Player And Light" instance=ExtResource("73_rdyjt")]
-position = Vector2(1032, -4546)
 
 [node name="Camp" type="Area2D" parent="."]
 position = Vector2(-11733, 20)
