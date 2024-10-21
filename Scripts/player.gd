@@ -48,6 +48,7 @@ func _process(delta: float) -> void:
 			SPEED = 300
 			HAS_STARTED_DAY = true
 	elif not HAS_DAY_ENDED:
+		_play_music()
 		_physics_process(delta)
 		_move_following_light(delta)
 		if FOLLOWING_LIGHT.REACHED_MIN_SIZE:
@@ -154,6 +155,13 @@ func _play_sleeping_animation():
 	SPEED = 0
 	$AnimatedSprite2D.animation = "Sleep"
 	$AnimatedSprite2D.play()
+	
+func _play_music():
+	if !_1_strings.playing:
+		_1_strings.play()
+		_2_bass.play()
+		_3_kicks.play()
+		_4_percs.play()
 
 func _handle_player_sleeping():
 	HAS_DAY_ENDED = true

@@ -302,6 +302,7 @@ shape = SubResource("CircleShape2D_oets7")
 
 [node name="Glass Breaking" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("52_8tdqs")
+bus = &"SFX"
 
 [node name="Walkies" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("53_w7aml")
@@ -309,24 +310,31 @@ bus = &"SFX"
 
 [node name="1-Strings" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("54_2tkc6")
+bus = &"Music"
 
 [node name="2-Bass" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("55_0yfl0")
+bus = &"Music"
 
 [node name="3-Kicks" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("56_wpf6i")
+bus = &"Music"
 
 [node name="4-Percs" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("57_pr3yl")
+bus = &"Music"
 
 [node name="Whispers" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("58_otieu")
+bus = &"SFX"
 
 [node name="Water Walkies" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("59_c2ji5")
+bus = &"SFX"
 
 [node name="Water Entry" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("60_s3aed")
+bus = &"SFX"
 
 [node name="Landing" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("61_n5giw")
