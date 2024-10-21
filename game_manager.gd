@@ -3,6 +3,9 @@ extends Node
 var current_scene = null
 var random = RandomNumberGenerator.new()
 var memory_core_count = 0
+var temp_memory_core_count = 0
+var prev_day_food_count = 3
+var food_count = 0
 
 var HAS_EYE_MEMORY: bool = false
 var NAME_EYE_MEMORY = "Eye Memory"
@@ -47,16 +50,22 @@ func _pickup_memory_core(name: String):
 		HAS_STATUE_MEMORY = true
 	elif name == NAME_TRAPPED_DOOR_MEMORY:
 		HAS_TRAPPED_DOOR_MEMORY = true
-	memory_core_count += 1
+	temp_memory_core_count += 1
 
 func _move_to_next_day():
 	_switch_scene("res://Scenes/black_scene.tscn")
 	await get_tree().create_timer(5).timeout
 	# Display something about current day
 	_switch_scene("res://Scenes/level_1.tscn")
+	memory_core_count += temp_memory_core_count
+	temp_memory_core_count = 0
+	prev_day_food_count = food_count
+	food_count = 0
 
 func _restart_day():
 	_switch_scene("res://Scenes/black_scene.tscn")
 	await get_tree().create_timer(5).timeout
 	# Display same day
 	_switch_scene("res://Scenes/level_1.tscn")
+	temp_memory_core_count = 0
+	food_count = 0
