@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cenbovvwhlsh4"]
+[gd_scene load_steps=66 format=3 uid="uid://cenbovvwhlsh4"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_qib5o"]
 [ext_resource type="Texture2D" uid="uid://dbdfsirnrcy1m" path="res://Assets/Crow/Idle/frame0000.png" id="2_uf2m0"]
@@ -53,6 +53,16 @@
 [ext_resource type="Texture2D" uid="uid://cswomcd78dc5x" path="res://Assets/Crow/Sleepin/frame0016.png" id="50_dwd0q"]
 [ext_resource type="AudioStream" uid="uid://c4ttaqoks0hmp" path="res://Assets/Music/glass-breaking.wav" id="52_8tdqs"]
 [ext_resource type="AudioStream" uid="uid://lmtu4xx073g0" path="res://Assets/Music/walkies-loop.wav" id="53_w7aml"]
+[ext_resource type="AudioStream" uid="uid://4qpepnsyfxg2" path="res://Assets/Music/music/crow-music-strings.wav" id="54_2tkc6"]
+[ext_resource type="AudioStream" uid="uid://b2odylmy8nk7k" path="res://Assets/Music/music/crow-music-bass.wav" id="55_0yfl0"]
+[ext_resource type="AudioStream" uid="uid://boixfoe6f3b1x" path="res://Assets/Music/music/crow-music-kicks.wav" id="56_wpf6i"]
+[ext_resource type="AudioStream" uid="uid://c8j2fc8tryya5" path="res://Assets/Music/music/crow-music-percs.wav" id="57_pr3yl"]
+[ext_resource type="AudioStream" uid="uid://bodjtqtp2spif" path="res://Assets/Music/whispers.wav" id="58_otieu"]
+[ext_resource type="AudioStream" uid="uid://denyahkrwml8m" path="res://Assets/Music/water-wading-loop.wav" id="59_c2ji5"]
+[ext_resource type="AudioStream" uid="uid://co42iigmhgnx4" path="res://Assets/Music/water-entry.wav" id="60_s3aed"]
+[ext_resource type="AudioStream" uid="uid://c8rojkc67epg3" path="res://Assets/Music/landing.wav" id="61_n5giw"]
+[ext_resource type="AudioStream" uid="uid://c8m8ms46akmwt" path="res://Assets/Music/jump.wav" id="62_mwomc"]
+[ext_resource type="AudioStream" uid="uid://cubswqjyws2wt" path="res://Assets/Music/cave-ambience-loop.wav" id="63_oma5m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tvkxi"]
 animations = [{
@@ -258,7 +268,7 @@ GLIDE_GRAVITY_MULTIPLIER = 0.06
 position = Vector2(-70, -319)
 rotation = 0.0349066
 ignore_rotation = false
-zoom = Vector2(0.38, 0.38)
+zoom = Vector2(0.2, 0.2)
 position_smoothing_enabled = true
 position_smoothing_speed = 4.83
 
@@ -266,7 +276,7 @@ position_smoothing_speed = 4.83
 light_mask = 2
 position = Vector2(-46, -207)
 sprite_frames = SubResource("SpriteFrames_tvkxi")
-animation = &"Floating"
+animation = &"Jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-140.14, 35.75)
@@ -278,7 +288,7 @@ scale = Vector2(1.5536, 1.5536)
 energy = 0.0
 texture = ExtResource("34_1cwe2")
 offset = Vector2(-12.02, 0)
-texture_scale = 1.15
+texture_scale = 0.7
 
 [node name="Hazard Detection" type="Area2D" parent="."]
 collision_layer = 4
@@ -295,6 +305,39 @@ stream = ExtResource("52_8tdqs")
 
 [node name="Walkies" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("53_w7aml")
+bus = &"SFX"
+
+[node name="1-Strings" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("54_2tkc6")
+
+[node name="2-Bass" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("55_0yfl0")
+
+[node name="3-Kicks" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("56_wpf6i")
+
+[node name="4-Percs" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("57_pr3yl")
+
+[node name="Whispers" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("58_otieu")
+
+[node name="Water Walkies" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("59_c2ji5")
+
+[node name="Water Entry" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("60_s3aed")
+
+[node name="Landing" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("61_n5giw")
+bus = &"SFX"
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("62_mwomc")
+bus = &"SFX"
+
+[node name="Cave Ambience" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("63_oma5m")
 
 [connection signal="area_entered" from="Hazard Detection" to="." method="_on_hazard_detection_area_entered"]
 [connection signal="area_exited" from="Hazard Detection" to="." method="_on_hazard_detection_area_exited"]
