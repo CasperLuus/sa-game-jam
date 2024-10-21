@@ -13,7 +13,8 @@ func _ready() -> void:
 	if GameManager.FLICKED_LEVER:
 		$Midground/TrapDoor.free()
 		$Colliders/TrapDoorCollision.free()
-
+		$Midground/Lever/Activated.visible = true
+		$Midground/Lever/Deactivated.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,6 +34,8 @@ func _process(delta: float) -> void:
 			GameManager.FLICKED_LEVER = true
 			$Midground/TrapDoor.free()
 			$Colliders/TrapDoorCollision.free()
+			$Midground/Lever/Activated.visible = true
+			$Midground/Lever/Deactivated.visible = false
 
 func _on_key_pickup(body: Node2D) -> void:
 	if (body.name == "Player"):

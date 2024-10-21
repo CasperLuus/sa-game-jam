@@ -381,6 +381,25 @@ scale = Vector2(1.78571, 1.78571)
 visible = false
 texture = ExtResource("81_2dd60")
 
+[node name="Lever" type="Node2D" parent="Midground"]
+position = Vector2(0.00195313, 0)
+
+[node name="Deactivated" type="Sprite2D" parent="Midground/Lever"]
+position = Vector2(-4083, -10257)
+scale = Vector2(2.34559, 2.34559)
+texture = ExtResource("80_nglrc")
+
+[node name="Activated" type="Sprite2D" parent="Midground/Lever"]
+visible = false
+position = Vector2(-4113, -9994)
+rotation = 3.12079
+scale = Vector2(2.34559, 2.34559)
+texture = ExtResource("80_nglrc")
+
+[node name="Pickup" parent="Midground/Lever" instance=ExtResource("83_dgyop")]
+position = Vector2(-4104, -10155)
+scale = Vector2(59.4, 59.4)
+
 [node name="Pickups" type="Node2D" parent="."]
 script = ExtResource("71_od375")
 
@@ -1018,25 +1037,6 @@ texture = ExtResource("79_dtew7")
 position = Vector2(16693, -11234)
 scale = Vector2(37.8645, 61.6362)
 
-[node name="Lever" type="Node2D" parent="Foreground"]
-position = Vector2(0.00195313, 0)
-
-[node name="Deactivated" type="Sprite2D" parent="Foreground/Lever"]
-position = Vector2(-4083, -10257)
-scale = Vector2(2.34559, 2.34559)
-texture = ExtResource("80_nglrc")
-
-[node name="Activated" type="Sprite2D" parent="Foreground/Lever"]
-visible = false
-position = Vector2(-4113, -9994)
-rotation = 3.12079
-scale = Vector2(2.34559, 2.34559)
-texture = ExtResource("80_nglrc")
-
-[node name="Pickup" parent="Foreground/Lever" instance=ExtResource("83_dgyop")]
-position = Vector2(-4104, -10155)
-scale = Vector2(59.4, 59.4)
-
 [node name="Occluders" type="Node2D" parent="."]
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="Occluders"]
@@ -1049,6 +1049,8 @@ occluder = SubResource("OccluderPolygon2D_4qu4e")
 
 [node name="UI" parent="." instance=ExtResource("82_hyist")]
 
+[connection signal="body_entered" from="Midground/Lever/Pickup" to="." method="_on_lever_pulled"]
+[connection signal="body_exited" from="Midground/Lever/Pickup" to="." method="_on_level_leave"]
 [connection signal="body_entered" from="Pickups/Key/KeyPickup" to="." method="_on_key_pickup"]
 [connection signal="body_entered" from="Camp" to="Camp" method="_on_body_entered"]
 [connection signal="body_exited" from="Camp" to="Camp" method="_on_body_exited"]
@@ -1056,5 +1058,3 @@ occluder = SubResource("OccluderPolygon2D_4qu4e")
 [connection signal="body_exited" from="Camp/Nest" to="Camp/Nest" method="_on_body_exited"]
 [connection signal="body_entered" from="Foreground/ShortcutDoor/Pickup" to="." method="_on_key_used"]
 [connection signal="body_entered" from="Foreground/ExitDoor/Pickup" to="." method="_on_exit_approach"]
-[connection signal="body_entered" from="Foreground/Lever/Pickup" to="." method="_on_lever_pulled"]
-[connection signal="body_exited" from="Foreground/Lever/Pickup" to="." method="_on_level_leave"]
