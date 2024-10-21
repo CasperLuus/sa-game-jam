@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://ctee3m6fl62vc"]
+[gd_scene load_steps=90 format=3 uid="uid://ctee3m6fl62vc"]
 
 [ext_resource type="Texture2D" uid="uid://diy4nh0i7kcl3" path="res://Assets/Scenes/Level1BLHS.png" id="1_0jvfp"]
 [ext_resource type="PackedScene" uid="uid://63bjp6tfld8k" path="res://Scenes/water_hazard.tscn" id="2_c7vpd"]
@@ -75,7 +75,12 @@
 [ext_resource type="Script" path="res://Scripts/camp.gd" id="74_ug4cu"]
 [ext_resource type="Script" path="res://Scripts/nest.gd" id="75_7kr38"]
 [ext_resource type="PackedScene" uid="uid://cenbovvwhlsh4" path="res://Scenes/player.tscn" id="76_86d7b"]
+[ext_resource type="Texture2D" uid="uid://ufi43vg4u1xi" path="res://Assets/Scenes/Foreground/Level1BRHSShortcutDoor.png" id="77_3riop"]
 [ext_resource type="PackedScene" uid="uid://cl2juli3o1glw" path="res://Scenes/following_light.tscn" id="77_u7fx8"]
+[ext_resource type="Texture2D" uid="uid://4f4beey67i5v" path="res://Assets/Scenes/Foreground/ExitDoor.png" id="78_kidg7"]
+[ext_resource type="Texture2D" uid="uid://b3n2lmjg6ig7w" path="res://Assets/Scenes/Foreground/StarExitDoor.png" id="79_dtew7"]
+[ext_resource type="Texture2D" uid="uid://b8l3pkqvicjwt" path="res://Assets/Scenes/Foreground/lever.png" id="80_nglrc"]
+[ext_resource type="Texture2D" uid="uid://ca1lqisaqofm6" path="res://Assets/Scenes/Foreground/Level1BRHSTrapDoor.png" id="81_2dd60"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lj0vn"]
 
@@ -278,6 +283,15 @@ size = Vector2(2290, 1295)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wtwq"]
 size = Vector2(492, 118)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_c7qkv"]
+polygon = PackedVector2Array(220, -9216, 593, -8971, 616, -8229, 615, -8982)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_akjvv"]
+polygon = PackedVector2Array(-1307, -5224, -3531, -6051, -5336, -4806, -5916, -4284, -7370, -4873, -12606, -4892, -12825, -3675, -13671, -3238, -14298, -3343, -14839, -3352, -15571, -3115, -16151, -3153, -16388, -2887, -16654, -2849, -16816, -2697, -17320, -2706, -17529, -2915, -18013, -2906, -18241, -3020, -19040, -3077, -19296, -1718, -18508, -1908, -17605, -1765, -16864, -1917, -15932, -2592, -15467, -2953, -14754, -3219, -13975, -3181, -13566, -3162, -12739, -3514, -11570, -3400, -11238, -3096, -9736, -3390, -9195, -3504, -9014, -3105, -8967, -3580, -8121, -3571, -7988, -3143, -7807, -3561, -6876, -3400, -6743, -3058, -6610, -3409, -5916, -3352, -5869, -2963, -5679, -3362, -3455, -5215, -1402, -4702)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4qu4e"]
+polygon = PackedVector2Array(4662, 346, 5270, 687, 5233, 186, 4748, 202, 2513, 202, 1612, 207, 342, 298, 348, 725, -420, 767, -980, 831, -980, 1157, -783, 1135, 668, 1087, 1766, 949, 1856, 248, 2518, 259, 2598, 671, 4326, 751)
+
 [node name="Level 1" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
@@ -352,6 +366,7 @@ texture = ExtResource("69_bj8b1")
 metadata/_edit_lock_ = true
 
 [node name="Colliders" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 17
 collision_mask = 17
 metadata/_edit_lock_ = true
@@ -859,6 +874,77 @@ position = Vector2(1432, -3741)
 scale = Vector2(1.68, 1.68)
 texture = ExtResource("73_gid1i")
 metadata/_edit_lock_ = true
+
+[node name="ShortcutDoor" type="Node2D" parent="Foreground"]
+
+[node name="Level1brhsShortcutDoor" type="Sprite2D" parent="Foreground/ShortcutDoor"]
+position = Vector2(600, -8687)
+scale = Vector2(1.57325, 1.57325)
+texture = ExtResource("77_3riop")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Foreground/ShortcutDoor"]
+occluder = SubResource("OccluderPolygon2D_c7qkv")
+
+[node name="ExitDoor" type="Node2D" parent="Foreground"]
+
+[node name="ExitDoor2" type="Sprite2D" parent="Foreground/ExitDoor"]
+position = Vector2(16946, -11375)
+scale = Vector2(1.665, 1.665)
+texture = ExtResource("78_kidg7")
+
+[node name="StarExitDoor" type="Sprite2D" parent="Foreground/ExitDoor"]
+position = Vector2(16906, -10885)
+scale = Vector2(1.2931, 1.2931)
+texture = ExtResource("79_dtew7")
+
+[node name="StarExitDoor2" type="Sprite2D" parent="Foreground/ExitDoor"]
+position = Vector2(16919, -11255)
+scale = Vector2(1.31034, 1.31034)
+texture = ExtResource("79_dtew7")
+
+[node name="StarExitDoor3" type="Sprite2D" parent="Foreground/ExitDoor"]
+position = Vector2(16924.5, -11607.7)
+scale = Vector2(1.36207, 1.36207)
+texture = ExtResource("79_dtew7")
+
+[node name="StarExitDoor4" type="Sprite2D" parent="Foreground/ExitDoor"]
+position = Vector2(16939, -12003)
+scale = Vector2(1.31034, 1.31034)
+texture = ExtResource("79_dtew7")
+
+[node name="Lever" type="Node2D" parent="Foreground"]
+position = Vector2(0.00195313, 0)
+scale = Vector2(1, 1)
+
+[node name="Deactivated" type="Sprite2D" parent="Foreground/Lever"]
+position = Vector2(-4083, -10257)
+scale = Vector2(2.34559, 2.34559)
+texture = ExtResource("80_nglrc")
+
+[node name="Activated" type="Sprite2D" parent="Foreground/Lever"]
+visible = false
+position = Vector2(-4113, -9994)
+rotation = 3.12079
+scale = Vector2(2.34559, 2.34559)
+texture = ExtResource("80_nglrc")
+
+[node name="TrapDoor" type="Node2D" parent="Foreground"]
+position = Vector2(20237, -3037)
+scale = Vector2(1.78571, 1.78571)
+
+[node name="TrapdoorClosed" type="Sprite2D" parent="Foreground/TrapDoor"]
+scale = Vector2(1, 1)
+texture = ExtResource("81_2dd60")
+
+[node name="Occluders" type="Node2D" parent="."]
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Occluders"]
+occluder = SubResource("OccluderPolygon2D_akjvv")
+sdf_collision = false
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Occluders"]
+position = Vector2(720, -7979)
+occluder = SubResource("OccluderPolygon2D_4qu4e")
 
 [connection signal="body_entered" from="Camp" to="Camp" method="_on_body_entered"]
 [connection signal="body_exited" from="Camp" to="Camp" method="_on_body_exited"]
