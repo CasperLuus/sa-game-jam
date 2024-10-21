@@ -86,9 +86,9 @@
 [ext_resource type="Texture2D" uid="uid://vxie2ypu20wa" path="res://Assets/Scenes/Foreground/HoleShoot3.png" id="79_kvki7"]
 [ext_resource type="Texture2D" uid="uid://b8l3pkqvicjwt" path="res://Assets/Scenes/Foreground/lever.png" id="80_nglrc"]
 [ext_resource type="Texture2D" uid="uid://ca1lqisaqofm6" path="res://Assets/Scenes/Foreground/Level1BRHSTrapDoor.png" id="81_2dd60"]
-[ext_resource type="PackedScene" uid="uid://c7qvnwhq0e4y0" path="res://Scenes/ui.tscn" id="82_hyist"]
+[ext_resource type="PackedScene" uid="uid://cdorpxq8ftbxu" path="res://Scenes/ui.tscn" id="82_hyist"]
 [ext_resource type="PackedScene" uid="uid://dhikjeodc5lrl" path="res://Scenes/pickup.tscn" id="83_dgyop"]
-[ext_resource type="PackedScene" uid="uid://b4x2pfjequu46" path="res://Scenes/bug_spawn.tscn" id="89_jejdj"]
+[ext_resource type="PackedScene" uid="uid://cp4wfugdsg2qg" path="res://Scenes/bug_spawn.tscn" id="89_jejdj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lj0vn"]
 
@@ -375,23 +375,27 @@ texture = ExtResource("69_bj8b1")
 metadata/_edit_lock_ = true
 
 [node name="TrapDoor" type="Node2D" parent="Midground"]
+material = ExtResource("3_vnad5")
 position = Vector2(20237, -3037)
 scale = Vector2(1.78571, 1.78571)
 
 [node name="TrapdoorClosed" type="Sprite2D" parent="Midground/TrapDoor"]
 visible = false
+material = ExtResource("3_vnad5")
 texture = ExtResource("81_2dd60")
 
 [node name="Lever" type="Node2D" parent="Midground"]
 position = Vector2(0.00195313, 0)
 
 [node name="Deactivated" type="Sprite2D" parent="Midground/Lever"]
+material = ExtResource("3_vnad5")
 position = Vector2(-4083, -10257)
 scale = Vector2(2.34559, 2.34559)
 texture = ExtResource("80_nglrc")
 
 [node name="Activated" type="Sprite2D" parent="Midground/Lever"]
 visible = false
+material = ExtResource("3_vnad5")
 position = Vector2(-4113, -9994)
 rotation = 3.12079
 scale = Vector2(2.34559, 2.34559)
@@ -969,6 +973,7 @@ z_index = 100
 
 [node name="HoleSnoot" type="Sprite2D" parent="Foreground"]
 z_index = 100
+material = ExtResource("3_vnad5")
 position = Vector2(-18582.3, 238.818)
 scale = Vector2(1.75635, 1.75635)
 texture = ExtResource("70_ltbtd")
@@ -976,12 +981,14 @@ metadata/_edit_lock_ = true
 
 [node name="HoleShoot2" type="Sprite2D" parent="Foreground"]
 z_index = 100
+material = ExtResource("3_vnad5")
 position = Vector2(1620, -3721)
 scale = Vector2(1.68, 1.68)
 texture = ExtResource("73_gid1i")
 metadata/_edit_lock_ = true
 
 [node name="HoleShoot3" type="Sprite2D" parent="Foreground"]
+material = ExtResource("3_vnad5")
 position = Vector2(-18023, -2732)
 scale = Vector2(1.68, 1.68)
 texture = ExtResource("79_kvki7")
@@ -990,6 +997,7 @@ metadata/_edit_lock_ = true
 [node name="ShortcutDoor" type="Node2D" parent="Foreground"]
 
 [node name="Level1brhsShortcutDoor" type="Sprite2D" parent="Foreground/ShortcutDoor"]
+material = ExtResource("3_vnad5")
 position = Vector2(600, -8687)
 scale = Vector2(1.57325, 1.57325)
 texture = ExtResource("77_3riop")
@@ -1005,6 +1013,7 @@ scale = Vector2(-38.3041, 56.9338)
 position = Vector2(6, 0)
 
 [node name="ExitDoor2" type="Sprite2D" parent="Foreground/ExitDoor"]
+material = ExtResource("3_vnad5")
 position = Vector2(16946, -11375)
 scale = Vector2(1.665, 1.665)
 texture = ExtResource("78_kidg7")

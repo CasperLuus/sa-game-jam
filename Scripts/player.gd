@@ -134,8 +134,8 @@ func _move_following_light(delta: float) -> void:
 	else: 
 		FOLLOWING_LIGHT.velocity.y = max(FOLLOWING_LIGHT.velocity.y, -clamp)
 	
-	if distance > 2000:
-		FOLLOWING_LIGHT.position += (distance - 2000) * direction
+	if distance > 1000:
+		FOLLOWING_LIGHT.position += (distance - 1000) * direction
 	
 	FOLLOWING_LIGHT.move_and_slide()
 
