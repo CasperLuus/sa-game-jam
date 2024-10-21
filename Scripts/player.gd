@@ -4,9 +4,7 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var LIGHT_SPEED = 410
-@export var LIGHT_BOUNCE = 50
 @export var LIGHT_ACCELERATION = 100
-@export var LIGHT_DISTANCE_CUTOFF = 50
 @export var LIGHT_POS_OFFSET: Vector2
 
 @export var SPEED = 300.0
@@ -71,10 +69,6 @@ func _move_following_light(delta: float) -> void:
 	var direction = FOLLOWING_LIGHT.position.direction_to(position + LIGHT_POS_OFFSET)
 	var distance = position.distance_to(FOLLOWING_LIGHT.position + LIGHT_POS_OFFSET)
 	FOLLOWING_LIGHT.velocity += direction * LIGHT_ACCELERATION * delta * distance
-	
-	#if velocity.is_zero_approx() and distance < LIGHT_DISTANCE_CUTOFF:
-		#FOLLOWING_LIGHT.velocity = Vector2.ZERO
-		
 	
 	var clamp = LIGHT_SPEED 
 	if (direction.x > 0):
