@@ -51,8 +51,8 @@
 [ext_resource type="Texture2D" uid="uid://cssf0hx0pjm5m" path="res://Assets/Crow/Sleepin/frame0014.png" id="48_ir6oc"]
 [ext_resource type="Texture2D" uid="uid://2r45gwhpxvmi" path="res://Assets/Crow/Sleepin/frame0015.png" id="49_mro3m"]
 [ext_resource type="Texture2D" uid="uid://cswomcd78dc5x" path="res://Assets/Crow/Sleepin/frame0016.png" id="50_dwd0q"]
-[ext_resource type="AudioStream" uid="uid://b7r5cnf3jycmt" path="res://Assets/Music/glass-breaking.wav" id="52_8tdqs"]
-[ext_resource type="AudioStream" uid="uid://ddm36bol4kfgt" path="res://Assets/Music/walkies-loop.wav" id="53_w7aml"]
+[ext_resource type="AudioStream" uid="uid://c4ttaqoks0hmp" path="res://Assets/Music/glass-breaking.wav" id="52_8tdqs"]
+[ext_resource type="AudioStream" uid="uid://lmtu4xx073g0" path="res://Assets/Music/walkies-loop.wav" id="53_w7aml"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tvkxi"]
 animations = [{
