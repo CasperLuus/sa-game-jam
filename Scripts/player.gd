@@ -147,7 +147,7 @@ func _on_hazard_detection_area_entered(area: Area2D) -> void:
 		FOLLOWING_LIGHT.SHOULD_USE_MULTIPLIER = true
 
 func _on_hazard_detection_area_exited(area: Area2D) -> void:
-	if area.name == "Water Hazard":
+	if area.name.contains("Water Hazard"):
 		FOLLOWING_LIGHT.SHOULD_USE_MULTIPLIER = false
 
 func _play_sleeping_animation():
