@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4x2pfjequu46"]
+[gd_scene load_steps=4 format=3 uid="uid://cp4wfugdsg2qg"]
 
 [ext_resource type="Script" path="res://Scripts/bug_spawn.gd" id="1_wb1tt"]
 [ext_resource type="PackedScene" uid="uid://bc14s47bdrss" path="res://Scenes/bug_2.tscn" id="2_nuq75"]
-[ext_resource type="PackedScene" uid="uid://ck15gssj1g4nv" path="res://Scenes/bug_1.tscn" id="3_ue575"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyyd4"]
 size = Vector2(1071, 739)
@@ -11,13 +10,10 @@ size = Vector2(1071, 739)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_wb1tt")
-bugs = [NodePath("Bug 1"), NodePath("Bug_2")]
-spawn_chance = 10
+bugs = [NodePath("Bug_2")]
+spawn_chance = 100
 
 [node name="Bug_2" parent="." instance=ExtResource("2_nuq75")]
-collision_mask = 1
-
-[node name="Bug 1" parent="." instance=ExtResource("3_ue575")]
 collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

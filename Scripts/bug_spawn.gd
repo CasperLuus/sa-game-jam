@@ -11,9 +11,9 @@ func _ready() -> void:
 	
 	for bug in bugs:
 		bug.visible = false
-	var rng = GameManager.random.randf_range(1, 100)
+	var rng = GameManager.random.randi_range(1, 100)
 	print (rng)
-	if rng < spawn_chance:
+	if rng <= spawn_chance:
 		bugs.pick_random().visible = true
 		print ("bug spawn")
 	# Pick a random bug to spawn (only one of the two) 

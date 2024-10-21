@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bc14s47bdrss"]
+[gd_scene load_steps=24 format=3 uid="uid://bc14s47bdrss"]
 
 [ext_resource type="Texture2D" uid="uid://c150lovbl6647" path="res://Assets/Foozle_Spire_Enemy_Bug/Ground/Spritesheets/Firebug.png" id="1_8ju3c"]
 [ext_resource type="Material" uid="uid://c52ct0odjwwhw" path="res://Materials/LightOnly.tres" id="1_ax6v1"]
 [ext_resource type="Script" path="res://Scripts/bug_2.gd" id="1_djspa"]
 [ext_resource type="PackedScene" uid="uid://dhikjeodc5lrl" path="res://Scenes/pickup.tscn" id="4_buey1"]
+[ext_resource type="Texture2D" uid="uid://cpc13wvft0ao" path="res://Assets/Foozle_Spire_Enemy_Bug/Ground/Spritesheets/Leafbug.png" id="4_eyo0i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8wsg"]
 atlas = ExtResource("1_8ju3c")
@@ -69,6 +70,70 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_u65pt"]
+atlas = ExtResource("4_eyo0i")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14ivn"]
+atlas = ExtResource("4_eyo0i")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1gvn"]
+atlas = ExtResource("4_eyo0i")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xour5"]
+atlas = ExtResource("4_eyo0i")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1etxm"]
+atlas = ExtResource("4_eyo0i")
+region = Rect2(256, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkuua"]
+atlas = ExtResource("4_eyo0i")
+region = Rect2(320, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfphb"]
+atlas = ExtResource("4_eyo0i")
+region = Rect2(384, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5q5g"]
+atlas = ExtResource("4_eyo0i")
+region = Rect2(448, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rtupn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u65pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14ivn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1gvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xour5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1etxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkuua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfphb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5q5g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Bug_2" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 16
@@ -81,26 +146,23 @@ scale = Vector2(8.998, 6.875)
 sprite_frames = SubResource("SpriteFrames_0samq")
 autoplay = "default"
 
-[node name="RayCastCliffRight" type="RayCast2D" parent="."]
-position = Vector2(-340, -20)
-scale = Vector2(9, 9)
-target_position = Vector2(0.555557, 38.1111)
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+material = ExtResource("1_ax6v1")
+position = Vector2(-14, 5)
+scale = Vector2(9.40625, 6.875)
+sprite_frames = SubResource("SpriteFrames_rtupn")
+autoplay = "default"
 
 [node name="RayCastCliffLeft" type="RayCast2D" parent="."]
-position = Vector2(386, -29)
+position = Vector2(276, -30)
 rotation = 0.00340776
 scale = Vector2(9, 9)
-target_position = Vector2(-0.888889, 37.8889)
-
-[node name="RayCastRight" type="RayCast2D" parent="."]
-position = Vector2(0, 3)
-scale = Vector2(3, 3)
-target_position = Vector2(-75.6667, 8.66667)
+target_position = Vector2(-0.0368996, 21.778)
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, -3)
 scale = Vector2(3, 3)
-target_position = Vector2(88.3333, -4)
+target_position = Vector2(88, -8.66667)
 
 [node name="Pickup" parent="." instance=ExtResource("4_buey1")]
 position = Vector2(24, -59)

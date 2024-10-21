@@ -88,7 +88,7 @@
 [ext_resource type="Texture2D" uid="uid://ca1lqisaqofm6" path="res://Assets/Scenes/Foreground/Level1BRHSTrapDoor.png" id="81_2dd60"]
 [ext_resource type="PackedScene" uid="uid://cdorpxq8ftbxu" path="res://Scenes/ui.tscn" id="82_hyist"]
 [ext_resource type="PackedScene" uid="uid://dhikjeodc5lrl" path="res://Scenes/pickup.tscn" id="83_dgyop"]
-[ext_resource type="PackedScene" path="res://Scenes/bug_spawn.tscn" id="89_jejdj"]
+[ext_resource type="PackedScene" uid="uid://cp4wfugdsg2qg" path="res://Scenes/bug_spawn.tscn" id="89_jejdj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lj0vn"]
 
