@@ -1,6 +1,7 @@
 extends Node
 
 var current_scene = null
+signal respawn
 
 func _ready() -> void:
 	var root = get_tree().root
