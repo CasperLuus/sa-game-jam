@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://bc14s47bdrss"]
+
+[ext_resource type="Texture2D" uid="uid://c150lovbl6647" path="res://Assets/Foozle_Spire_Enemy_Bug/Ground/Spritesheets/Firebug.png" id="1_8ju3c"]
+[ext_resource type="Script" path="res://Scripts/bug_2.gd" id="1_djspa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8wsg"]
+atlas = ExtResource("1_8ju3c")
+region = Rect2(0, 320, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76sw4"]
+atlas = ExtResource("1_8ju3c")
+region = Rect2(128, 320, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gokx3"]
+atlas = ExtResource("1_8ju3c")
+region = Rect2(256, 320, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghsfc"]
+atlas = ExtResource("1_8ju3c")
+region = Rect2(384, 320, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw3w5"]
+atlas = ExtResource("1_8ju3c")
+region = Rect2(512, 320, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qlj1"]
+atlas = ExtResource("1_8ju3c")
+region = Rect2(640, 320, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v0sl"]
+atlas = ExtResource("1_8ju3c")
+region = Rect2(768, 320, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ow71k"]
+atlas = ExtResource("1_8ju3c")
+region = Rect2(896, 320, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0samq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8wsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76sw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gokx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghsfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw3w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qlj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v0sl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ow71k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Bug_2" type="Node2D"]
+script = ExtResource("1_djspa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8.00001, -3)
+scale = Vector2(8.998, 6.875)
+sprite_frames = SubResource("SpriteFrames_0samq")
+autoplay = "default"
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 3)
+scale = Vector2(3, 3)
+target_position = Vector2(-75.6667, 8.66667)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -3)
+scale = Vector2(3, 3)
+target_position = Vector2(88.3333, -4)
