@@ -69,23 +69,24 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.animation = "Floating"
 	else:
 		if HAS_JUMPED:
-			print("landed")
+			# print("landed")
 			jump.stop()
 			walkies.stop()
 			water_walkies.stop()
 			landing.play()
 			HAS_JUMPED = false
 		if velocity.is_zero_approx():
-			print("Idle")
+			# print("Idle")
 			walkies.stop()
 			water_walkies.stop()
 			$AnimatedSprite2D.animation = "Idle"
 		else:
-			print("Bouncing")
+			# print("Bouncing")
 			if !walkies.playing and !FOLLOWING_LIGHT.SHOULD_USE_MULTIPLIER:
 				walkies.play()
 			elif water_walkies.playing and FOLLOWING_LIGHT.SHOULD_USE_MULTIPLIER:
 				water_walkies.play()
+				#isnt working atm, oh well
 			$AnimatedSprite2D.animation = "Jump"
 	
 	# Handle jump.
@@ -142,6 +143,7 @@ func _on_hazard_detection_area_entered(area: Area2D) -> void:
 	if area.name.contains("Spike Hazard"):
 		_handle_player_death()
 	elif area.name.contains("Water Hazard"):
+		water_entry.play()
 		FOLLOWING_LIGHT.SHOULD_USE_MULTIPLIER = true
 
 func _on_hazard_detection_area_exited(area: Area2D) -> void:

@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cl2juli3o1glw"]
+[gd_scene load_steps=8 format=3 uid="uid://cl2juli3o1glw"]
 
 [ext_resource type="Texture2D" uid="uid://c4eseubv6xpm1" path="res://Assets/Light/Light_Transparent_3.png" id="1_n7rit"]
 [ext_resource type="Script" path="res://Scripts/following_light.gd" id="1_qbnix"]
 [ext_resource type="Texture2D" uid="uid://dfcsthdtnupat" path="res://Assets/Light/PointLight.png" id="3_u23sy"]
+[ext_resource type="AudioStream" uid="uid://b2odylmy8nk7k" path="res://Assets/Music/music/crow-music-bass.wav" id="4_lp7l8"]
+[ext_resource type="AudioStream" uid="uid://boixfoe6f3b1x" path="res://Assets/Music/music/crow-music-kicks.wav" id="5_mkpbd"]
+[ext_resource type="AudioStream" uid="uid://c8j2fc8tryya5" path="res://Assets/Music/music/crow-music-percs.wav" id="6_sbeav"]
+[ext_resource type="AudioStream" uid="uid://4qpepnsyfxg2" path="res://Assets/Music/music/crow-music-strings.wav" id="7_pu1lq"]
 
 [node name="FollowingLight" type="CharacterBody2D"]
 position = Vector2(38, -251)
@@ -26,3 +30,15 @@ metadata/_edit_lock_ = true
 position = Vector2(7.5, 8.74998)
 texture = ExtResource("3_u23sy")
 offset = Vector2(-12.02, 0)
+
+[node name="1-Strings" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_pu1lq")
+
+[node name="2-Bass" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_lp7l8")
+
+[node name="3-Kicks" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_mkpbd")
+
+[node name="4-Percs" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_sbeav")

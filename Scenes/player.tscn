@@ -338,6 +338,7 @@ bus = &"SFX"
 
 [node name="Cave Ambience" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("63_oma5m")
+autoplay = true
 
 [connection signal="area_entered" from="Hazard Detection" to="." method="_on_hazard_detection_area_entered"]
 [connection signal="area_exited" from="Hazard Detection" to="." method="_on_hazard_detection_area_exited"]
