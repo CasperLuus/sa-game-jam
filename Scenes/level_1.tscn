@@ -84,7 +84,7 @@
 [ext_resource type="Texture2D" uid="uid://vxie2ypu20wa" path="res://Assets/Scenes/Foreground/HoleShoot3.png" id="79_kvki7"]
 [ext_resource type="Texture2D" uid="uid://b8l3pkqvicjwt" path="res://Assets/Scenes/Foreground/lever.png" id="80_nglrc"]
 [ext_resource type="Texture2D" uid="uid://ca1lqisaqofm6" path="res://Assets/Scenes/Foreground/Level1BRHSTrapDoor.png" id="81_2dd60"]
-[ext_resource type="PackedScene" uid="uid://c7qvnwhq0e4y0" path="res://Scenes/ui.tscn" id="82_hyist"]
+[ext_resource type="PackedScene" uid="uid://cdorpxq8ftbxu" path="res://Scenes/ui.tscn" id="82_hyist"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lj0vn"]
 

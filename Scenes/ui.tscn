@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7qvnwhq0e4y0"]
+[gd_scene load_steps=6 format=3 uid="uid://cdorpxq8ftbxu"]
 
 [ext_resource type="FontFile" uid="uid://dp62dqv3f07yd" path="res://Assets/Fonts/IndieFlower-Regular.ttf" id="1_8lh7t"]
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_hyk2u"]
