@@ -848,7 +848,7 @@ position = Vector2(12168.9, -7683.41)
 polygon = PackedVector2Array(-1039.91, -111.594, -1039.91, 96.4063, 747.092, 90.4063, 768.092, -111.594)
 
 [node name="CollisionPolygon2D85" type="CollisionPolygon2D" parent="Colliders"]
-position = Vector2(19343.3, -3560.48)
+position = Vector2(19310, -3500)
 polygon = PackedVector2Array(-173.295, -105.522, 150.705, -105.522, 184.705, 109.478, -169.295, 116.478)
 one_way_collision = true
 
