@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://ctee3m6fl62vc"]
+[gd_scene load_steps=93 format=3 uid="uid://ctee3m6fl62vc"]
 
 [ext_resource type="Texture2D" uid="uid://diy4nh0i7kcl3" path="res://Assets/Scenes/Level1BLHS.png" id="1_0jvfp"]
 [ext_resource type="PackedScene" uid="uid://63bjp6tfld8k" path="res://Scenes/water_hazard.tscn" id="2_c7vpd"]
@@ -71,6 +71,7 @@
 [ext_resource type="Texture2D" uid="uid://ddhpmutvgniji" path="res://Assets/Scenes/Foreground/AnimatedFire/2/1_60.png" id="68_b48op"]
 [ext_resource type="Texture2D" uid="uid://81rhar2k01m8" path="res://Assets/Scenes/Foreground/Nest.png" id="69_bj8b1"]
 [ext_resource type="Texture2D" uid="uid://djbve2wc1lge7" path="res://Assets/Scenes/Foreground/HoleSnoot.png" id="70_ltbtd"]
+[ext_resource type="Script" path="res://Scripts/pickup.gd" id="71_od375"]
 [ext_resource type="Texture2D" uid="uid://ka6dc7hl777m" path="res://Assets/Scenes/Foreground/HoleShoot2.png" id="73_gid1i"]
 [ext_resource type="PackedScene" uid="uid://c5s18mcte2ufe" path="res://Scenes/core_memories.tscn" id="73_rdyjt"]
 [ext_resource type="Script" path="res://Scripts/camp.gd" id="74_ug4cu"]
@@ -894,8 +895,16 @@ polygon = PackedVector2Array(2167, -2077, 2157, -2241, 2633, -2248, 2651, -2094,
 metadata/_edit_lock_ = true
 
 [node name="Pickups" type="Node2D" parent="."]
+script = ExtResource("71_od375")
 
-[node name="core memories" parent="Pickups" instance=ExtResource("73_rdyjt")]
+[node name="Eye Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
+position = Vector2(-14745, -1809)
+
+[node name="Heart Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
+
+[node name="Statue Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
+
+[node name="Trapped Door Memory" parent="Pickups" instance=ExtResource("73_rdyjt")]
 position = Vector2(-14745, -1809)
 
 [node name="Player And Light" type="Node2D" parent="."]
