@@ -16,6 +16,14 @@ var NAME_STATUE_MEMORY = "Statue Memory"
 var HAS_TRAPPED_DOOR_MEMORY: bool = false
 var NAME_TRAPPED_DOOR_MEMORY = "Trapped Door Memory"
 
+var HAS_KEY: bool = false
+var HAS_KEY_TEMP: bool = false
+var USED_KEY: bool = false
+
+var FLICKED_LEVER: bool = false
+
+
+
 func _ready() -> void:
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() -1)
@@ -58,6 +66,7 @@ func _move_to_next_day():
 	# Display something about current day
 	_switch_scene("res://Scenes/level_1.tscn")
 	memory_core_count += temp_memory_core_count
+	HAS_KEY = (HAS_KEY_TEMP or HAS_KEY) and !USED_KEY
 	temp_memory_core_count = 0
 	prev_day_food_count = food_count
 	food_count = 0
@@ -69,3 +78,4 @@ func _restart_day():
 	_switch_scene("res://Scenes/level_1.tscn")
 	temp_memory_core_count = 0
 	food_count = 0
+	HAS_KEY_TEMP = false
