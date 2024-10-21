@@ -252,7 +252,6 @@ radius = 134.766
 position = Vector2(68, -444)
 script = ExtResource("1_qib5o")
 LIGHT_POS_OFFSET = Vector2(299.205, -254.22)
-GLIDE_GRAVITY_MULTIPLIER = 0.06
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-70, -319)

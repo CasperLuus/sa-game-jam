@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://ctee3m6fl62vc"]
+[gd_scene load_steps=93 format=3 uid="uid://ctee3m6fl62vc"]
 
 [ext_resource type="Texture2D" uid="uid://diy4nh0i7kcl3" path="res://Assets/Scenes/Level1BLHS.png" id="1_0jvfp"]
 [ext_resource type="PackedScene" uid="uid://63bjp6tfld8k" path="res://Scenes/water_hazard.tscn" id="2_c7vpd"]
@@ -80,6 +80,7 @@
 [ext_resource type="PackedScene" uid="uid://cl2juli3o1glw" path="res://Scenes/following_light.tscn" id="77_u7fx8"]
 [ext_resource type="Texture2D" uid="uid://4f4beey67i5v" path="res://Assets/Scenes/Foreground/ExitDoor.png" id="78_kidg7"]
 [ext_resource type="Texture2D" uid="uid://b3n2lmjg6ig7w" path="res://Assets/Scenes/Foreground/StarExitDoor.png" id="79_dtew7"]
+[ext_resource type="Texture2D" uid="uid://vxie2ypu20wa" path="res://Assets/Scenes/Foreground/HoleShoot3.png" id="79_kvki7"]
 [ext_resource type="Texture2D" uid="uid://b8l3pkqvicjwt" path="res://Assets/Scenes/Foreground/lever.png" id="80_nglrc"]
 [ext_resource type="Texture2D" uid="uid://ca1lqisaqofm6" path="res://Assets/Scenes/Foreground/Level1BRHSTrapDoor.png" id="81_2dd60"]
 [ext_resource type="PackedScene" uid="uid://cdorpxq8ftbxu" path="res://Scenes/ui.tscn" id="82_hyist"]
@@ -289,7 +290,7 @@ size = Vector2(492, 118)
 polygon = PackedVector2Array(220, -9216, 593, -8971, 616, -8229, 615, -8982)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_akjvv"]
-polygon = PackedVector2Array(-1307, -5224, -3531, -6051, -5336, -4806, -5916, -4284, -7370, -4873, -12606, -4892, -12825, -3675, -13671, -3238, -14298, -3343, -14839, -3352, -15571, -3115, -16151, -3153, -16388, -2887, -16654, -2849, -16816, -2697, -17320, -2706, -17529, -2915, -18013, -2906, -18241, -3020, -19040, -3077, -19296, -1718, -18508, -1908, -17605, -1765, -16864, -1917, -15932, -2592, -15467, -2953, -14754, -3219, -13975, -3181, -13566, -3162, -12739, -3514, -11570, -3400, -11238, -3096, -9736, -3390, -9195, -3504, -9014, -3105, -8967, -3580, -8121, -3571, -7988, -3143, -7807, -3561, -6876, -3400, -6743, -3058, -6610, -3409, -5916, -3352, -5869, -2963, -5679, -3362, -3455, -5215, -1402, -4702)
+polygon = PackedVector2Array(-1307, -5224, -3531, -6051, -5336, -4806, -5916, -4284, -7370, -4873, -12606, -4892, -12825, -3675, -13671, -3238, -14298, -3343, -14839, -3352, -15571, -3115, -16151, -3153, -16388, -2887, -16654, -2849, -16816, -2697, -17320, -2706, -17529, -2915, -18013, -2906, -18241, -3020, -19040, -3077, -19296, -1718, -18508, -1908, -17605, -1765, -16864, -1917, -15932, -2592, -15467, -2953, -14754, -3219, -13975, -3181, -13566, -3162, -12739, -3514, -11570, -3400, -11238, -3096, -10484, -2955, -10013, -3172, -9814, -2894, -9792, -2916, -9782, -3258, -9168, -3366, -9067, -3017, -9055, -3019, -9013, -2938, -8978, -2953, -8890, -3369, -8693, -3445, -8157, -3540, -8013, -3094, -7981, -3028, -7948, -3046, -7939, -3134, -7918, -3153, -7875, -3343, -7827, -3382, -6836, -3289, -6828, -3184, -6801, -3047, -6765, -2963, -6731, -2980, -6587, -3384, -5978, -3322, -5876, -2921, -5829, -2929, -5679, -3362, -5438, -3552, -5222, -3675, -4992, -3762, -4718, -3912, -4553, -4026, -4401, -4144, -3415, -4635, -1402, -4702)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4qu4e"]
 polygon = PackedVector2Array(4662, 346, 5270, 687, 5233, 186, 4748, 202, 2513, 202, 1612, 207, 342, 298, 348, 725, -420, 767, -980, 831, -980, 1157, -783, 1135, 668, 1087, 1766, 949, 1856, 248, 2518, 259, 2598, 671, 4326, 751)
@@ -367,10 +368,16 @@ scale = Vector2(1.36779, 1.36779)
 texture = ExtResource("69_bj8b1")
 metadata/_edit_lock_ = true
 
+[node name="TrapDoor" type="Node2D" parent="Midground"]
+position = Vector2(20237, -3037)
+scale = Vector2(1.78571, 1.78571)
+
+[node name="TrapdoorClosed" type="Sprite2D" parent="Midground/TrapDoor"]
+texture = ExtResource("81_2dd60")
+
 [node name="Colliders" type="StaticBody2D" parent="."]
 collision_layer = 17
 collision_mask = 17
-metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D40" type="CollisionPolygon2D" parent="Colliders"]
 position = Vector2(16476.6, 1477.74)
@@ -482,12 +489,12 @@ one_way_collision = true
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Colliders"]
 position = Vector2(-19146.9, 436.86)
-polygon = PackedVector2Array(416.869, 1052.14, 83.8691, 1064.14, 52.8691, 976.14, 77.8691, 899.14, 82.8691, 567.14, 111.869, 520.14, 261.869, 423.14, 314.869, 398.14, 237.869, 203.14, -81.1309, 401.14, -256.131, 531.14, -216.131, 944.14, -241.131, 1265.14, 181.869, 1324.14, 1218.6, 1603.96, 1465.6, 1742.96, 1528.6, 1894.96, 1624.6, 1749.96, 1903.6, 1628.96, 3346.6, 1318.96, 3477.87, 1256.14, 521.869, 1313.14)
+polygon = PackedVector2Array(416.869, 1052.14, 83.8691, 1064.14, 52.8691, 976.14, 77.8691, 899.14, 82.8691, 567.14, 111.869, 520.14, 261.869, 423.14, 570.9, 435.14, 487.9, 274.14, 448.9, 235.14, 156.9, -534.86, -81.1309, 401.14, -256.131, 531.14, -216.131, 944.14, -241.131, 1265.14, 181.869, 1324.14, 1218.6, 1603.96, 1465.6, 1742.96, 1528.6, 1894.96, 1624.6, 1749.96, 1903.6, 1628.96, 3346.6, 1318.96, 3477.87, 1256.14, 521.869, 1313.14)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Colliders"]
 position = Vector2(-19132.8, 245.934)
 scale = Vector2(1.69386, 1.69386)
-polygon = PackedVector2Array(559.964, -52.6112, 680.398, 244.934, 801.424, 113.282, 948.575, 41.3075, 1430.74, -134.672, 2151.59, -47.2979, 2187.61, 17.0522, 2468.5, -30.7213, 2583.74, -71.503, 2671.69, -264.553, 2922.61, -400.928, 3025.93, -435.76, 3316.96, -444.615, 3463.39, -470.001, 3717.25, -521.363, 3707.21, -602.834, 2567.8, -599.882, 2530.61, -356.06, 497.975, -276.361)
+polygon = PackedVector2Array(559.964, -52.6112, 626.263, 151.763, 680.398, 244.934, 801.424, 113.282, 948.575, 41.3075, 1430.74, -134.672, 2151.59, -47.2979, 2187.61, 17.0522, 2468.5, -30.7213, 2583.74, -71.503, 2671.69, -264.553, 2922.61, -400.928, 3025.93, -435.76, 3316.96, -444.615, 3463.39, -470.001, 3717.25, -521.363, 3707.21, -602.834, 2567.8, -599.882, 2530.61, -356.06, 497.975, -276.361)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Colliders"]
 position = Vector2(-11973.3, -70.1821)
@@ -550,7 +557,7 @@ polygon = PackedVector2Array(335.329, 50.6222, 212.532, 305.661, 279.241, 589.03
 [node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="Colliders"]
 position = Vector2(-19090.2, -149.915)
 scale = Vector2(1.69386, 1.69386)
-polygon = PackedVector2Array(2891.15, -1979.55, 3666.89, -1984.28, 4322.2, -1988.41, 8584.04, -2137.77, 10787.3, -3107.15, 10665.7, -3006.2, 10519.9, -2199.17, 10359.3, -2144.26, 9839.16, -2169.06, 8803.68, -2023.24, 8612.99, -1901.62, 8543.92, -1636.55, 8114.72, -1816.61, 7664.27, -1885.68, 6545.29, -1949.13, 6068.46, -1905, 5909.15, -1890.26, 5604.45, -1862.07, 5427.34, -1795.36, 5204.77, -1667.84, 4616.77, -1608.8, 4390.65, -1644.22, 3937.05, -1750.62, 3679.85, -1683.78, 3464.96, -1719.79, 3261.31, -1647.77, 2585.93, -1818.38, 2145.51, -1657.8, 1915.27, -1497.81, 1094.66, -857.264, 644.209, -837.191, 755.198, -1968.93, 1889.29, -1979.55)
+polygon = PackedVector2Array(2891.15, -1979.55, 3666.89, -1984.28, 4322.2, -1988.41, 8584.04, -2137.77, 10787.3, -3107.15, 10665.7, -3006.2, 10519.9, -2199.17, 10359.3, -2144.26, 9839.16, -2169.06, 8803.68, -2023.24, 8612.99, -1901.62, 8543.92, -1636.55, 8114.72, -1816.61, 7664.27, -1885.68, 6545.29, -1949.13, 6068.46, -1905, 5909.15, -1890.26, 5604.45, -1862.07, 5427.34, -1795.36, 5204.77, -1667.84, 4616.77, -1608.8, 4390.65, -1644.22, 3937.05, -1750.62, 3679.85, -1683.78, 3464.96, -1719.79, 3261.31, -1647.77, 2585.93, -1818.38, 2145.51, -1657.8, 1915.27, -1497.81, 1094.66, -857.264, 621.774, -831.878, 755.198, -1968.93, 1889.29, -1979.55)
 
 [node name="CollisionPolygon2D21" type="CollisionPolygon2D" parent="Colliders"]
 position = Vector2(25889, -80)
@@ -706,7 +713,7 @@ one_way_collision = true
 
 [node name="CollisionPolygon2D51" type="CollisionPolygon2D" parent="Colliders"]
 position = Vector2(-18754.6, -3717.04)
-polygon = PackedVector2Array(-101.414, -1592.96, -45.4141, -201.961, 307.586, -198.961, 42.5859, 2125.04, -245.414, 3569.04, -163.414, 4380.04, -621.414, 4664.04, -467.414, 2631.04, -254.414, -1592.96)
+polygon = PackedVector2Array(-101.414, -1592.96, -45.4141, -201.961, 307.586, -198.961, 78.5996, 2125.04, -241.4, 3565.04, -163.414, 4380.04, -621.414, 4664.04, -467.414, 2631.04, -254.414, -1592.96)
 
 [node name="CollisionPolygon2D82" type="CollisionPolygon2D" parent="Colliders"]
 position = Vector2(15372.2, -13198.2)
@@ -798,7 +805,6 @@ polygon = PackedVector2Array(-15141, 2055, -14189, 2073, -14225, 2199, -15087, 2
 one_way_collision = true
 
 [node name="Hazards" type="Node2D" parent="."]
-visible = false
 metadata/_edit_lock_ = true
 
 [node name="Spike Hazard" parent="Hazards" instance=ExtResource("3_cym74")]
@@ -895,22 +901,21 @@ polygon = PackedVector2Array(2167, -2077, 2157, -2241, 2633, -2248, 2651, -2094,
 metadata/_edit_lock_ = true
 
 [node name="Player And Light" type="Node2D" parent="."]
-visible = false
-position = Vector2(-15777, 2737)
+position = Vector2(-15739, 3046)
 
 [node name="Player" parent="Player And Light" node_paths=PackedStringArray("FOLLOWING_LIGHT") instance=ExtResource("76_86d7b")]
 position = Vector2(-3005, -477)
+LIGHT_SPEED = 448
 FOLLOWING_LIGHT = NodePath("../FollowingLight")
 metadata/_edit_lock_ = true
 
 [node name="FollowingLight" parent="Player And Light" instance=ExtResource("77_u7fx8")]
-position = Vector2(-3768, -246)
+position = Vector2(-3564, -261)
 
 [node name="core memories" parent="Player And Light" instance=ExtResource("73_rdyjt")]
 position = Vector2(1032, -4546)
 
 [node name="Camp" type="Area2D" parent="."]
-visible = false
 position = Vector2(-11733, 20)
 script = ExtResource("74_ug4cu")
 
@@ -937,7 +942,6 @@ tab_size = 8
 
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 100
-metadata/_edit_lock_ = true
 
 [node name="HoleSnoot" type="Sprite2D" parent="Foreground"]
 z_index = 100
@@ -948,9 +952,15 @@ metadata/_edit_lock_ = true
 
 [node name="HoleShoot2" type="Sprite2D" parent="Foreground"]
 z_index = 100
-position = Vector2(1432, -3741)
+position = Vector2(1620, -3721)
 scale = Vector2(1.68, 1.68)
 texture = ExtResource("73_gid1i")
+metadata/_edit_lock_ = true
+
+[node name="HoleShoot3" type="Sprite2D" parent="Foreground"]
+position = Vector2(-18023, -2732)
+scale = Vector2(1.68, 1.68)
+texture = ExtResource("79_kvki7")
 metadata/_edit_lock_ = true
 
 [node name="ShortcutDoor" type="Node2D" parent="Foreground"]
@@ -1004,13 +1014,6 @@ position = Vector2(-4113, -9994)
 rotation = 3.12079
 scale = Vector2(2.34559, 2.34559)
 texture = ExtResource("80_nglrc")
-
-[node name="TrapDoor" type="Node2D" parent="Foreground"]
-position = Vector2(20237, -3037)
-scale = Vector2(1.78571, 1.78571)
-
-[node name="TrapdoorClosed" type="Sprite2D" parent="Foreground/TrapDoor"]
-texture = ExtResource("81_2dd60")
 
 [node name="Occluders" type="Node2D" parent="."]
 

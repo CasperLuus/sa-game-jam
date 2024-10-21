@@ -63,7 +63,7 @@ position = Vector2(0.999634, -0.0351563)
 texture = ExtResource("4_4oxoh")
 
 [node name="Stars" type="Node2D" parent="."]
-position = Vector2(-1557.85, 18.3976)
+position = Vector2(-1557.85, 13.7982)
 rotation = -0.00651514
 scale = Vector2(1.36217, 1.50298)
 

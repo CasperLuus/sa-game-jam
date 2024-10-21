@@ -11,12 +11,17 @@ extends CharacterBody2D
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -850.0
+@export var JUMP_HEIGHT = 850.0
 
 var IS_SLEEPING: bool = false
 var HAS_STARTED_DAY: bool = false
 var HAS_DAY_ENDED: bool = false
 
 @export var FOLLOWING_LIGHT: CharacterBody2D
+
+@export var NORMAL_GRAVITY_MULTIPLIER: float = 0.5
+@export var GLIDE_GRAVITY_MULTIPLIER: float = 0.2
+var _current_multiplier = NORMAL_GRAVITY_MULTIPLIER
 
 func _ready() -> void:
 	FOLLOWING_LIGHT.visible = false
@@ -41,8 +46,12 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		#print("Airtime")
+		if velocity.y < 0: 
+			velocity += get_gravity() * delta * NORMAL_GRAVITY_MULTIPLIER
+		else:
+			velocity += get_gravity() * delta * _current_multiplier
+			
 		$AnimatedSprite2D.animation = "Floating"
-		velocity += get_gravity() * delta * 0.5
 	elif velocity.is_zero_approx():
 		#print("Idle")
 		$AnimatedSprite2D.animation = "Idle"
@@ -53,10 +62,18 @@ func _physics_process(delta: float) -> void:
 	$AnimatedSprite2D.flip_h = velocity.x < 0
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("move_up") and is_on_floor():
-		#print("Jumped")
-		velocity.y = JUMP_VELOCITY
-
+	if Input.is_action_just_pressed("move_up"):
+		if is_on_floor():
+			velocity.y = JUMP_VELOCITY
+		_current_multiplier = GLIDE_GRAVITY_MULTIPLIER
+	
+	if Input.is_action_just_released("move_up"):
+		_current_multiplier = NORMAL_GRAVITY_MULTIPLIER
+		
+	
+	
+	
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
@@ -85,6 +102,8 @@ func _move_following_light(delta: float) -> void:
 		FOLLOWING_LIGHT.velocity.y = min(FOLLOWING_LIGHT.velocity.y, clamp)
 	else: 
 		FOLLOWING_LIGHT.velocity.y = max(FOLLOWING_LIGHT.velocity.y, -clamp)
+	
+	#if distance > min()
 	
 	FOLLOWING_LIGHT.move_and_slide()
 
